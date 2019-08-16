@@ -1,0 +1,182 @@
+<view class="bg" wx:if="{{apiHaveLoad}}">
+    <!-- 收藏小程序图片 -->
+    <view class='shouCangView' wx:if="{{ifshowShouCang}}" catchtap='hideShoucang'>
+        <image src='/assets/index/shoucang.png' />
+    </view>
+
+    <!-- 顶部分类栏 -->
+    <view class='categoryView'>
+        <view class='category {{index==nowCategoryIndex?"SelectCategory":null}}' data-id='{{item.id}}' data-index="{{index}}" wx:for="{{classArr}}" wx:key="{{index}}" catchtap='categoryClick'>{{item.title}}</view>
+        <view class='ellipsisView' catchtap='goToChangeCategory'>...</view>
+    </view>
+    <!-- 数据列表 -->
+    <view class='listView'>
+        <view wx:for="{{contentArr}}" wx:key="{{index}}">
+
+            <!-- 普通列表 -->
+            <view class='dominView' wx:if="{{item.type!='class'}}" data-id="{{item.id}}">
+
+                <view class='contentImageView' data-typeid="{{item.typeid}}" data-id="{{item.id}}" style='position: relative;' catchtap="goToDetails">
+                    <image class='contentImage' src='{{item.imgurl}}' />
+                    <view class='userInfoView' data-uid="{{item.uid}}" catchtap="goToUserHome">
+                        <image src='{{item.photo}}' />
+                        <view class='userName oneEllipsis' style='margin-right:12rpx;'>{{item.name}}</view>
+                    </view>
+                </view>
+
+                <view class='contentStat'>
+                    <view class='statView' wx:if="{{!item.havcollection}}" catchtap="collectionFun" data-index="{{index}}" data-id="{{item.id}}">
+                        <image src='/assets/new/collection.png' />
+                        <view>收藏{{item.collection}}</view>
+                    </view>
+
+                    <view class='statView' wx:if="{{item.havcollection}}" catchtap="delcollectionFun" data-index="{{index}}" data-id="{{item.id}}">
+                        <image src='/assets/new/haveCollection.png' />
+                        <view style="color:#ffc200">已收藏</view>
+                    </view>
+
+                    <view class='mainString'></view>
+
+                    <view class='statView' data-index="{{index}}" data-src="{{item.type==1?item.imgurl:item.shuiyinurl}}" catchtap='{{item.type==1?"downloadPicture":"downloadVideo"}}'>
+                        <image src='/assets/new/upload.png' />
+                        <!-- <image wx:if="{{item.type==2}}" src='/assets/new/play.png' /> -->
+                        <view>下载{{item.download}}</view>
+                        <!-- <view wx:if="{{item.type==2}}">下载{{item.download}}</view> -->
+                    </view>
+
+                    <view class='mainString'></view>
+
+                    <view class='statView'>
+                        <image src='/assets/new/share.png' />
+                        <view>分享{{item.share}}</view>
+                        <button data-index="{{index}}" open-type='share' id='shareBtn'></button>
+                    </view>
+                </view>
+
+                <!-- 腾讯广告 -->
+                <ad style="margin-bottom:40rpx;" unit-id="adunit-dbf8383820df9f9b" wx:if="{{index==0 || index==18}}"></ad>
+
+                <!-- 马甲的广告 -->
+                <!-- datoutie -->
+                <view wx:if="{{index==8}}" class='classView' style='margin-bottom:40rpx;'>
+                    <image src='https://duanju.58100.com/upload/meilizhi.png'  />
+                    <navigator target="miniProgram" open-type="navigate" app-id="wxa9889cbb49d3e5d3" path="" extra-data="" version="release"></navigator>
+                </view>
+
+                <!-- lvjing -->
+                <view wx:if="{{index==17}}" class='classView' style='margin-bottom:40rpx;'>
+                    <image src='https://duanju.58100.com/upload/datoutie.png'  />
+                    <navigator target="miniProgram" open-type="navigate" app-id="wxffec6b164990d505" path="" extra-data="" version="release"></navigator>
+                </view>
+
+                <!--  -->
+
+            </view>
+
+            <!-- 类型分类卡片 -->
+            <view data-id="{{item.id}}" wx:if="{{item.type=='class'}}" class='classView' style='margin-bottom:40rpx;' catchtap="goToCollection">
+                <image src='{{item.pic}}' />
+                <view class='clickSee'>
+                    点击查看
+                </view>
+            </view>
+
+        </view>
+
+        <!-- 个人主页查看 -->
+        <!-- <view class='userFoucsView' catchtap='goToUserHome'>
+
+            <view class='userCenter'>
+
+                <view class='userIcon'>
+                    <image src='/assets/poster/qrcode.jpg' />
+                </view>
+
+                <view class='userCenterName oneEllipsis'>
+                    哈哈哈哈哈啊哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+                </view>
+
+                <view class='checkHome'>
+                    查看主页
+                </view>
+            </view>
+
+            <view class='userDes'>
+                一场说走就走的旅行
+            </view>
+
+            <view class='photoGallery'>
+                <image src='https://pic.rmb.bdstatic.com/6a0f8d8ade90a70f0aa19198b000fe9f1941.gif' />
+            </view>
+
+        </view> -->
+
+
+    </view>
+
+    <!-- 暂时没有数据 -->
+    <view class='nocom' wx:if="{{!contentArr.length}}">
+        <image src='/assets/index/nodata.png' />
+        <view>暂时还没有数据亲~</view>
+    </view>
+
+    <!-- 新手任务 -->
+    <view class='beansRulsView' wx:if="{{ifshowrulesView}}">
+
+        <view class='rulsBody'>
+            <view style='margin-top:60rpx;'>
+                <image src='/assets/index/check.png' />
+            </view>
+            <view style='color:#27BCAD;font-size:48rpx;font-weight:bold;margin-top:40rpx;'>恭喜你完成新手任务</view>
+            <view style='font-size:40rpx;margin-top:20rpx;'>句豆+
+                <text style='font-size:48rpx'>20</text> </view>
+            <view style='font-size:32rpx;color:#666;margin-top:60rpx;'>
+                <view>完成其他新手任务</view>
+                <view style='margin-top:20rpx;'>获取更多句豆兑换现金奖品</view>
+            </view>
+
+            <view class='completeBtn' catchtap='goToFounPage'>去做任务</view>
+
+        </view>
+
+        <view class='closeView' catchtap='showbeansMask'>
+            <image src='/assets/poster/close.png' />
+        </view>
+
+    </view>
+
+    <!-- 制图按钮 -->
+    <view class='zhitu' catchtap='goToZhiTu' wx:if="{{ifshowzhitu}}">
+        <image src='/assets/new/drawing.png' />
+    </view>
+
+    <!-- 加载中 -->
+    <view class='loading' wx:if="{{ifloadtxt}}">
+        加载中 . . .
+    </view>
+
+    <button catchtap='catchtap' id='getInfoBtn' wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo">
+    </button>
+
+    <!-- 首屏推荐 -->
+    <view class="homeView" wx:if="{{ifShowHomeView}}" catchtap="hideHomeView">
+
+        <view class="monthView">
+            <image src="{{mothImg}}" style="width:312rpx;height:72rpx;" />
+        </view>
+
+        <view class="timeDay">
+            {{daytime}}
+        </view>
+
+        <view class="daySignImg">
+            <image src="{{daySignImg}}"/>
+        </view>
+
+        <view class="saveBtn" catchtap="saveDaySign">保存图片</view>
+
+    </view>
+
+</view>
+
+<canvas canvas-id="canvas" style="width:{{bgimgW}}px;height:{{bgimgH}}px;display:block;position:absolute; bottom:1500px" />

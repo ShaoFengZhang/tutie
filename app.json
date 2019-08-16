@@ -1,0 +1,22 @@
+{
+    "pages": [
+        "pages/index/index"
+    ],
+
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "麻辣短句",
+        "navigationBarTextStyle": "black"
+    },
+
+    "navigateToMiniProgramAppIdList":["wx6a739cc11cae398a","wxa9889cbb49d3e5d3","wxffec6b164990d505"],
+
+    "networkTimeout": {
+        "request": 20000
+    },
+
+    "debug": false,
+
+    "sitemapLocation": "sitemap.json"
+}

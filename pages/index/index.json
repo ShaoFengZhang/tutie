@@ -1,0 +1,11 @@
+{
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "麻辣短句",
+    "backgroundColor": "#000000",
+    "usingComponents": {
+        "contentTxt": "/components/conentView"
+    },
+    "disableSwipeBack":true,
+    "enablePullDownRefresh":true,
+    "onReachBottomDistance":0
+}

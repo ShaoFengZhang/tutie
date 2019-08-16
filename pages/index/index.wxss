@@ -1,0 +1,315 @@
+.bg {
+    background-color: #fff;
+}
+
+image {
+    vertical-align: middle;
+}
+
+/* 收藏小程序image */
+
+.shouCangView, .shouCangView image {
+    width: 100%;
+    height: 70rpx;
+}
+
+/* 顶部分类 */
+
+.categoryView {
+    width: 670rpx;
+    height: 96rpx;
+    margin: 0 auto;
+    line-height: 96rpx;
+    color: #666;
+    font-size: 36rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.SelectCategory {
+    color: #282828;
+    font-size: 40rpx;
+    font-weight: bold;
+}
+
+.category {
+    height: 96rpx;
+}
+
+.ellipsisView {
+    width: 44rpx;
+    height: 44rpx;
+    background: rgba(142, 142, 147, 1);
+    border-radius: 50%;
+    line-height: 22rpx;
+    text-align: center;
+    color: #fff;
+}
+
+/* 数据分类 */
+
+.listView {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 40rpx;
+}
+
+.contentImageView {
+    box-shadow: 0px 16rpx 24rpx 0px rgba(40, 40, 40, 0.2);
+    border-radius: 32rpx;
+    overflow: hidden;
+}
+
+.dominView, .classView, .userFoucsView {
+    width: 100%;
+}
+
+.contentImage {
+    width: 100%;
+    height: 680rpx;
+    border-radius: 32rpx;
+}
+
+.userInfoView {
+    min-width: 134rpx;
+    height: 56rpx;
+    background: rgba(39, 188, 173, 1);
+    box-shadow: 0px 4rpx 8rpx 0px rgba(0, 0, 0, 0.5);
+    border-radius: 82rpx 0rpx 0rpx 82rpx;
+    position: absolute;
+    right: 0;
+    top: 28rpx;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.userInfoView image {
+    width: 56rpx;
+    height: 56rpx;
+    border-radius: 50%;
+    margin-right: 12rpx;
+}
+
+.userName {
+    max-width: 500rpx;
+    color: #fff;
+    font-size: 28rpx;
+    text-align: center;
+    line-height: 56rpx;
+}
+
+/* 数据分类下载分享的统计框 */
+
+.contentStat {
+    width: 100%;
+    height: 160rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.statView {
+    width: 224rpx;
+    height: 160rpx;
+    color: #8e8e93;
+    font-size: 32rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.statView image {
+    width: 40rpx;
+    height: 40rpx;
+    margin-bottom: 10rpx;
+}
+
+.mainString {
+    width: 2rpx;
+    height: 66rpx;
+    background: rgba(243, 245, 249, 1);
+}
+
+/* 分类图片 */
+
+.classView {
+    box-shadow: 0px 16rpx 24rpx 0px rgba(40, 40, 40, 0.2);
+}
+
+.classView, .classView image {
+    width: 100%;
+    height: 160rpx;
+    position: relative;
+    border-radius: 32rpx;
+}
+
+.clickSee {
+    width: 176rpx;
+    height: 56rpx;
+    border-radius: 28rpx;
+    border: 2rpx solid rgba(255, 255, 255, 1);
+    text-align: center;
+    line-height: 56rpx;
+    color: #fff;
+    font-size: 32rpx;
+    font-weight: bold;
+    position: absolute;
+    right: 40rpx;
+    top: 52rpx;
+}
+
+/* 个人主页 */
+
+.userFoucsView {
+    height: 414rpx;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0px 16rpx 24rpx 0px rgba(40, 40, 40, 0.2);
+    border-radius: 32rpx;
+    margin-bottom: 40rpx;
+}
+
+.userCenter, .userDes, .photoGallery {
+    box-sizing: border-box;
+    padding: 0 32rpx;
+    width: 100%;
+}
+
+.userCenter {
+    height: 90rpx;
+    border-bottom: 2rpx solid #f3f5f9;
+    font-size: 32rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.userIcon, .userIcon image {
+    width: 54rpx;
+    height: 54rpx;
+    border-radius: 50%;
+}
+
+.userCenterName {
+    margin-left: 20rpx;
+    color: #999;
+    width: 346rpx;
+}
+
+.checkHome {
+    color: #fff;
+    width: 176rpx;
+    height: 56rpx;
+    background: rgba(39, 188, 173, 1);
+    border-radius: 28rpx;
+    text-align: center;
+    line-height: 56rpx;
+    font-weight: bold;
+}
+
+.userDes {
+    height: 126rpx;
+    line-height: 126rpx;
+    box-sizing: border-box;
+    padding: 0 32rpx;
+    color: #282828;
+    font-size: 48rpx;
+    font-weight: bold;
+}
+
+.photoGallery {
+    display: flex;
+    justify-content: space-between;
+}
+
+.photoGallery image {
+    width: 192rpx;
+    height: 140rpx;
+    border-radius: 16rpx;
+}
+
+.zhitu {
+    position: fixed;
+    right: 20rpx;
+    top: 822rpx;
+}
+
+.zhitu, .zhitu image {
+    width: 120rpx;
+    height: 120rpx;
+    box-shadow: 0px 16rpx 24rpx 0px rgba(255, 218, 68, 0.2);
+    border-radius: 50%;
+}
+
+/* shouquan */
+
+#getInfoBtn {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    padding: 0;
+    margin: 0;
+}
+
+/* 首屏推荐 */
+
+.homeView {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+}
+
+.monthView {
+    width: 312rpx;
+    height: 72rpx;
+    margin: 62rpx auto 0;
+}
+
+.timeDay {
+    text-align: center;
+    color: #e7e7e7;
+    font-size: 32rpx;
+    margin-top: 8rpx;
+}
+
+.daySignImg {
+    margin: 24rpx auto 0;
+}
+
+.daySignImg, .daySignImg image {
+    width: 672rpx;
+    height: 704rpx;
+    border-radius: 16rpx;
+}
+
+.saveBtn {
+    width: 480rpx;
+    height: 94rpx;
+    background: #FFDA44;
+    box-shadow: 0px 20rpx 40rpx 0px rgba(255, 218, 68, 0.3);
+    border-radius: 47rpx;
+    text-align: center;
+    line-height: 94rpx;
+    font-size: 48rpx;
+    font-weight: bold;
+    margin: 40rpx auto 0;
+}
+
+navigator{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 160rpx;
+    opacity: 0,
+}

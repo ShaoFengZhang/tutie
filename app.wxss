@@ -1,0 +1,238 @@
+/**app.wxss**/
+
+/* 
+
+    Positioning 
+    Box model
+    Typographic
+    Visual
+
+ */
+
+ .wxFont{
+    font-family: "mala Bold";
+}
+
+page {
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* 去除scrollView的滚动条 */
+
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    color: transparent;
+}
+
+/*去除button点击的hover */
+
+.button-hover {
+    color: rgba(255, 255, 255, 0);
+    background-color: rgba(255, 255, 255, 0);
+}
+
+button::after {
+    border: none;
+}
+
+/*navigator */
+
+.navigator-hover {
+    background-color: rgba(0, 0, 0, 0);
+    opacity: 1;
+}
+
+.wrapflex {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.columnflex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+.normalView {
+    position: relative;
+    box-sizing: border-box;
+    padding: 0 40rpx;
+}
+
+.bg {
+    position: relative;
+    width: 100%;
+    /* height: 100vh; */
+    background-color: white;
+    overflow: hidden;
+}
+
+#shareBtn {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.hover-class {
+    background-color: #f2f2f2;
+}
+
+.oneEllipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.fourEllipsis {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+}
+
+.viewLine {
+    width: 100%;
+    height: 2rpx;
+    background-color: #f2f2f2;
+}
+
+.scroll-view_y {
+    background-color: #f3f5f9;
+}
+
+.botTxt {
+    width: 100%;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    font-size: 32rpx;
+    color: #999;
+    padding-bottom: 32rpx;
+    /* background-color:#f3f5f9;  */
+}
+
+.loading {
+    width: 100%;
+    height: 88rpx;
+    line-height: 88rpx;
+    text-align: center;
+    color: #3c3c3c;
+    font-size: 28rpx;
+}
+
+/* 没有一条数据时 */
+
+.nocom {
+    font-size: 32rpx;
+    color: #999;
+    text-align: center;
+    padding: 160rpx 0 80rpx 0;
+}
+
+.nocom image {
+    width: 280rpx;
+    height: 280rpx;
+    vertical-align: middle;
+    margin-bottom: 40rpx;
+}
+
+/* 收集formid */
+
+.Sbtn {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+form {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+/* tanchuang */
+
+.beansRulsView {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(40, 40, 40, 0.7);
+    overflow: hidden;
+}
+
+.rulsBody {
+    width: 670rpx;
+    height: 794rpx;
+    background: #fff;
+    border-radius: 22rpx;
+    margin: 74rpx auto 0;
+    overflow: hidden;
+    text-align: center;
+}
+
+.rulsBody image {
+    width: 100%;
+    vertical-align: top;
+}
+
+.closeView, .closeView image {
+    width: 70rpx;
+    height: 70rpx;
+}
+
+.closeView {
+    margin: 40rpx auto 0;
+}
+
+.ruleTop{
+    width: 386rpx;
+    height: 132rpx;
+    margin: 110rpx auto 0;
+}
+
+.ruleTop image {
+    width: 386rpx;
+    height: 132rpx;
+    vertical-align: top;
+}
+
+.rulsBody {
+    margin: 172rpx auto 0;
+}
+
+.rulsBody image {
+    width: 128rpx;
+    height: 128rpx;
+    vertical-align: top;
+}
+
+.completeBtn {
+    width: 432rpx;
+    height: 88rpx;
+    background: linear-gradient(90deg, rgba(110, 198, 252, 1) 0%, rgba(69, 206, 189, 1) 100%);
+    border-radius: 16rpx;
+    line-height: 88rpx;
+    text-align: center;
+    color: white;
+    margin: 32rpx auto 0;
+}
