@@ -1,14 +1,14 @@
 //app.js
-import loginApi from './utils/login.js';
-const ald = require('./utils/ald-stat.js');
+// import loginApi from './utils/login.js';
+// const ald = require('./utils/ald-stat.js');
 App({
     onLaunch: function() {
         this.netBlock=0;
         let _this=this;
-        loginApi.getSettingfnc(this);
+
+        // 获取系统信息
         wx.getSystemInfo({
             success(res) {
-                // console.log(res);
                 _this.pix = res.pixelRatio;
                 _this.windowHeight = res.windowHeight;
                 _this.windowwidth = res.windowWidth;
@@ -16,11 +16,7 @@ App({
                 _this.Bheight = res.screenHeight - res.windowHeight - res.statusBarHeight - 44;
             }
         });
- 
-        // 登录服务器
-        // loginApi.wxlogin(this).then(function(value){
-        //     loginApi.getSettingfnc(_this);
-        // });
+
 
         // 强制更新
         const updateManager = wx.getUpdateManager();

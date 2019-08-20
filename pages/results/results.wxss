@@ -1,0 +1,65 @@
+.bg {
+    background-color: #fff;
+    min-height: 100vh;
+}
+
+.posterView image {
+    width: 750rpx;
+    height: 100vh;
+    vertical-align: top;
+}
+
+.btnView {
+    width: 750rpx;
+    /* height: 140rpx; */
+    height: 12vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background: #fff;
+}
+
+.shareBtnView {
+    width: 50%;
+    /* height: 140rpx; */
+    height: 12vh;
+    background: rgba(9, 115, 252, 1);
+    /* line-height: 140rpx; */
+    line-height: 12vh;
+    position: relative;
+}
+
+.saveposter {
+    width: 50%;
+    /* height: 140rpx; */
+    height: 12vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    color: #000;
+    font-size: 24rpx;
+}
+
+.saveposter image {
+    width: 44rpx;
+    height: 44rpx;
+}
+
+.reelectBtn image {
+    width: 128rpx;
+    height: 128rpx;
+    border-radius: 50%;
+}
+
+.reelectBtn {
+    border-radius: 50%;
+    overflow: hidden;
+    position: fixed;
+    right: 8rpx;
+    bottom: 210rpx;
+}

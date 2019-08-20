@@ -1,0 +1,31 @@
+<view class='bg'>
+
+    <view class="posterView">
+        <image src="{{posterUrl}}" bindload="bindload" />
+    </view>
+
+    <view class="btnView">
+
+        <view class="shareBtnView">
+            <text style="color:#fff;font-size:40rpx;">送给好友</text>
+            <button id="shareBtn" open-type="share"></button>
+        </view>
+
+        <view class="saveposter" catchtap="uploadImage">
+            <image src="/assets/app/xiazai.png" />
+            <text>保存图片</text>
+        </view>
+
+        <!-- <view class="saveposter">
+            <image src="/assets/app/shengcheng.png" />
+            <text>生成图片</text>
+        </view> -->
+
+
+    </view>
+
+    <view class="reelectBtn" catchtap="shangchuan">
+        <image src="/assets/app/chongxuan.png" />
+    </view>
+
+</view>

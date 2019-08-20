@@ -1,0 +1,55 @@
+<view class='bg'>
+
+    <view class="userInfoView">
+
+        <view class="userIocn">
+            <open-data type="userAvatarUrl"></open-data>
+        </view>
+
+        <view class="userNameView">
+            <view class="huiyuanview">
+                <view class="username oneEllipsis">
+                    <open-data type="userNickName"></open-data>
+                </view>
+                <image src="/assets/app/huiyuan.png" style="width:40rpx;height:40rpx;" />
+            </view>
+            <view style="color:#999;font-size:30rpx;margin-top:6rpx;">2019-10-19到期</view>
+        </view>
+
+        <view class="renewalBtn">
+            续费
+        </view>
+
+    </view>
+
+    <view class="serverListView">
+
+        <view class="serverItem" wx:for="{{serverArr}}" wx:key="{{index}}">
+
+            <image style="width:48rpx;height:48rpx;margin-right:32rpx;" src="{{item.icon}}" />
+
+            <view style="width:550rpx">{{item.title}}</view>
+
+            <image style="width:60rpx;height:60rpx;" src="/assets/app/right.png" />
+
+        </view>
+
+    </view>
+
+    <view class="shengming serverItem">
+        <image style="width:48rpx;height:48rpx;margin-right:32rpx;" src="/assets/app/mianze.png" />
+
+        <view style="width:550rpx">免责声明</view>
+
+        <image style="width:60rpx;height:60rpx;" src="/assets/app/right.png" />
+    </view>
+
+
+
+
+
+
+    <button id='getInfoBtn' wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo">
+    </button>
+
+</view>

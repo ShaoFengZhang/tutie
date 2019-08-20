@@ -1,6 +1,11 @@
 {
     "pages": [
-        "pages/index/index"
+        "pages/index/index",
+        "pages/classify/classify",
+        "pages/mine/mine",
+        "pages/classdetails/classdetails",
+        "pages/making/making",
+        "pages/results/results"
     ],
 
     "window": {

@@ -1,0 +1,13 @@
+<view class="bg">
+
+    <view class="topImage">
+
+        <image src="{{imgUrl}}" />
+
+    </view>
+
+    <view class="makeBtn" catchtap="shangchuan">
+        上传1张照片 立即生成
+    </view>
+
+</view>

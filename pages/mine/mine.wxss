@@ -1,0 +1,70 @@
+.bg {
+    min-height: 100vh;
+    background: #f6f6f8;
+}
+
+.userInfoView {
+    width: 100%;
+    height: 260rpx;
+    box-sizing: border-box;
+    padding: 40rpx;
+    background: #fff;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.userIocn {
+    width: 180rpx;
+    height: 180rpx;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 40rpx;
+}
+
+.userNameView {
+    width: 350rpx;
+}
+
+.huiyuanview {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.username {
+    max-width: 280rpx;
+}
+
+.renewalBtn {
+    width: 100rpx;
+    height: 40rpx;
+    border-radius: 20rpx;
+    border: 2rpx solid rgba(9, 115, 252, 1);
+    line-height: 40rpx;
+    text-align: center;
+    color: #0973FC;
+    font-size: 30rpx;
+}
+
+/* 项目列表 */
+.serverListView{
+    width: 100%;
+    background-color: #fff;
+    margin-top: 16rpx;
+}
+
+.serverItem{
+    width: 100%;
+    height: 120rpx;
+    box-sizing: border-box;
+    padding: 36rpx 24rpx 36rpx 36rpx;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.shengming{
+    margin-top: 16rpx;
+    background-color: #fff;
+}

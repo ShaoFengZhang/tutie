@@ -27,9 +27,8 @@ const wxlogin = function(app) {
                             app.globalData.session_key = value.data.session_key;
                             wx.setStorageSync('user_openID', value.data.openid);
                             wx.setStorageSync('u_id', value.data.uid);
-                            wx.setStorageSync('ifnewUser', value.data.newuser);
                             getSettingfnc(app);
-                            console.log(value, "login");
+                            // console.log(value, "login");
                             resolve(value);
                         } else {
                             loginNum++;
@@ -47,7 +46,7 @@ const wxlogin = function(app) {
     return promise;
 }
 
-// 登录服务器
+// 登录服务器 暂时没有用到
 const loginServer = function(resolve, res, app) {
     wx.request({
         url: `${domin}/home/index/dologin`,
