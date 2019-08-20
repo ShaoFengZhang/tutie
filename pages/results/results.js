@@ -8,6 +8,10 @@ Page({
 
     onLoad: function(options) {
         console.log(options);
+        this.setData({
+            // scrollHeight: (app.windowHeight + app.Bheight) * 750 / app.sysWidth - 804,
+            margintop: ((app.windowHeight) * 750 / app.sysWidth - 1126)/2,
+        });
         if (options && options.picUrl) {
             this.picUrl = options.picUrl;
             this.mubanId = options.mubanId;

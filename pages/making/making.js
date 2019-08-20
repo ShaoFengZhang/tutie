@@ -11,6 +11,7 @@ Page({
     onLoad: function (options) {
         if (options && options.mubanId){
             this.mubanId = options.mubanId;
+            this.imgurl = options.imgurl;
             this.setData({
                 imgUrl: loginApi.srcDomin + '/newadmin/Uploads/' + options.imgurl
             })
@@ -34,7 +35,7 @@ Page({
         let _this = this;
         util.upLoadImage("shangchuan", "image", 1, this, loginApi, function (data) {
             wx.navigateTo({
-                url: `/pages/results/results?picUrl=${data.imgurl}&mubanId=${_this.mubanId}&imgurl=${_this.data.imgUrl}`,
+                url: `/pages/results/results?picUrl=${data.imgurl}&mubanId=${_this.mubanId}&imgurl=${_this.imgurl}`,
             })
         });
     },
