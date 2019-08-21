@@ -134,8 +134,9 @@ Page({
         this.page = 1;
         this.setData({
             contentArr: [],
-        })
-        this.getContent(this.data.classType);
+        });
+        this.cangetData = true;
+        this.getContent();
         wx.stopPullDownRefresh();
     },
 
@@ -145,7 +146,7 @@ Page({
             this.page++;
             clearTimeout(this.bottomTime);
             this.bottomTime = setTimeout(() => {
-                this.getContent(this.data.classType);
+                this.getContent();
             }, 1000)
         }
     },

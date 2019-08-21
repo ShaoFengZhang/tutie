@@ -1,7 +1,12 @@
 <view class='bg'>
 
     <view class="posterView">
-        <image style="margin: {{margintop}}rpx auto;" src="{{posterUrl}}" bindload="bindload" />
+
+        <view class="imgview" style="margin: {{margintop+62}}rpx auto;">
+            <image src="{{posterUrl}}" bindload="bindload" />
+            <view class="mask"></view>
+        </view>
+
     </view>
 
     <view class="btnView">

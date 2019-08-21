@@ -64,15 +64,20 @@ image {
 .mubanIconListView {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     flex-wrap: wrap;
 }
 
-.mubanItem{
+.mubanItem {
     margin-bottom: 20rpx;
+    margin-right: 22rpx;
 }
 
-.mubanItem,.mubanItem image {
+.mubanItem:nth-of-type(3n+0) {
+    margin-right: 0rpx;
+}
+
+.mubanItem, .mubanItem image {
     width: 220rpx;
     height: 350rpx;
     border-radius: 8rpx;
