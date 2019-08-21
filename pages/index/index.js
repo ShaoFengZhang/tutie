@@ -12,19 +12,19 @@ Page({
             {
                 title:'节日祝福',
                 icon:'/assets/app/jiericlass.png',
-                id:1,
+                id:12,
                 color:'(255,0,104,0.3)'
             },
             {
                 title: '日签制作',
                 icon: '/assets/app/riqianclass.png',
-                id: 1,
+                id: 13,
                 color: '(19,197,81,0.3)'
             },
             {
                 title: '励志海报',
                 icon: '/assets/app/lizhiclass.png',
-                id: 1,
+                id: 14,
                 color: '(0,156,255,0.3)'
             },
         ],
@@ -35,7 +35,7 @@ Page({
     onLoad: function(options) {
         let _this = this;
         this.page = 1;
-        this.rows = 9;
+        this.rows = 6;
         this.cangetData = true;
 
 
@@ -105,28 +105,6 @@ Page({
         return util.shareObj
     },
 
-    // 点击分类
-    categoryClick: function(e) {
-        let {
-            id,
-            index
-        } = e.currentTarget.dataset;
-        console.log(id)
-        if (index == this.data.nowCategoryIndex) {
-            return;
-        };
-        this.page = 1;
-        this.rows = 4;
-        this.cangetData = true;
-        this.setData({
-            nowCategoryIndex: index,
-            classType: id,
-            contentArr: [],
-            ifloadtxt: 0,
-        });
-        this.getContent(this.data.classType);
-    },
-
     // 加载上一页
     onPullDownRefresh: function() {
         console.log("onPullDownRefresh")
@@ -142,13 +120,13 @@ Page({
 
     // 加载下一页
     onReachBottom: function() {
-        if (this.cangetData) {
-            this.page++;
-            clearTimeout(this.bottomTime);
-            this.bottomTime = setTimeout(() => {
-                this.getContent();
-            }, 1000)
-        }
+        // if (this.cangetData) {
+        //     this.page++;
+        //     clearTimeout(this.bottomTime);
+        //     this.bottomTime = setTimeout(() => {
+        //         this.getContent();
+        //     }, 1000)
+        // }
     },
 
     catchtap: function() {},
@@ -170,9 +148,24 @@ Page({
 
     //跳转making
     gotomaking:function(e){
-        let index=e.currentTarget.dataset.index;
+        let { index, bindex } = e.currentTarget.dataset;
         wx.navigateTo({
-            url: `/pages/making/making?mubanId=${this.data.contentArr[index].id}&imgurl=${this.data.contentArr[index].xiaotu_url}`,
+            url: `/pages/making/making?mubanId=${this.data.contentArr[bindex].content[index].id}&imgurl=${this.data.contentArr[bindex].content[index].xiaotu_url}`,
+        })
+    },
+
+    //跳转固定分类
+    checkClass:function(e){
+        let id = e.currentTarget.dataset.id;
+        wx.navigateTo({
+            url: `/pages/classdetails/classdetails?typeid=${id}`,
+        })
+    },
+
+    //跳转全部分类页面
+    gotoClassify:function(){
+        wx.switchTab({
+            url: `/pages/classify/classify`
         })
     },
 
@@ -198,10 +191,11 @@ Page({
     // 获取首页数据
     getContent: function(type) {
         let _this = this;
-        let getContentUrl = loginApi.domin + '/home/index/meituindex';
+        let getContentUrl = loginApi.domin + '/home/index/meituindexs';
         loginApi.requestUrl(_this, getContentUrl, "POST", {
             page: this.page,
             len: this.rows,
+            typeid:'',
         }, function(res) {
             if (res.status == 1) {
                 if (res.contents.length < _this.rows) {
@@ -223,26 +217,10 @@ Page({
                     util.toast("暂无更多更新");
                     return;
                 };
-                // for (let i = 0; i < res.contents.length; i++) {
-                //     if (i < res.collection.length) {
-                //         if (res.collection[i].contentid == res.contents[i].id) {
-                //             res.contents[i].havcollection = true;
-                //         }
-                //     }
-
-                // }
-                // res.type.type = "class";
-                // res.contents.splice(5, 0, res.type)
                 _this.setData({
                     contentArr: _this.data.contentArr.concat(res.contents),
                     apiHaveLoad: 1,
                 });
-                if (_this.navdetail) {
-                    _this.navdetail = false;
-                    wx.navigateTo({
-                        url: `/pages/details/details?contentid=${_this.contentId}&typeid=${_this.contypeid}`,
-                    })
-                }
 
             }
         })

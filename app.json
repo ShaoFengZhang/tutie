@@ -13,7 +13,32 @@
         "navigationBarTitleText": "麻辣短句",
         "navigationBarTextStyle": "black"
     },
-    
+    "tabBar": {
+        "color": "#4B4B4B",
+        "selectedColor": "#0973FC",
+        "backgroundColor": "#fff",
+        "borderStyle": "black",
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "iconPath": "/assets/app/home-noselect.png",
+                "text": "首页",
+                "selectedIconPath": "/assets/app/home-select.png"
+            },
+            {
+                "pagePath": "pages/classify/classify",
+                "iconPath": "/assets/app/classify-noselect.png",
+                "text": "分类",
+                "selectedIconPath": "/assets/app/classify-Select.png"
+            },
+            {
+                "pagePath": "pages/mine/mine",
+                "iconPath": "/assets/app/my-noselect.png",
+                "text": "我的",
+                "selectedIconPath": "/assets/app/my-select.png"
+            }
+        ]
+    },
     "navigateToMiniProgramAppIdList": [
         "wx6a739cc11cae398a",
         "wxa9889cbb49d3e5d3",

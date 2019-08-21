@@ -8,11 +8,10 @@ Page({
         userInfo: {},
         hasUserInfo: false,
         canIUse: wx.canIUse('button.open-type.getUserInfo'),
-        serverArr:[
-            {
-                'icon':'/assets/app/jifeng.png',
-                'title':'我的积分',
-                'path':'',
+        serverArr: [{
+                'icon': '/assets/app/jifeng.png',
+                'title': '我的积分',
+                'path': '',
             },
             {
                 'icon': '/assets/app/shoucang.png',
@@ -32,20 +31,26 @@ Page({
         ]
     },
 
-    onLoad: function (options) {
+    onLoad: function(options) {
 
     },
 
-    onShow: function () {
+    onShow: function() {
+        if (app.globalData.userInfo) {
+            this.setData({
+                userInfo: app.globalData.userInfo,
+                hasUserInfo: true
+            });
+        }
     },
 
 
-    onShareAppMessage: function () {
+    onShareAppMessage: function() {
         return util.shareObj
     },
 
 
-    getUserInfo: function (e) {
+    getUserInfo: function(e) {
         console.log(e);
         let _this = this;
         if (!e.detail.userInfo) {
@@ -60,13 +65,13 @@ Page({
         let iv = e.detail.iv;
         let encryptedData = e.detail.encryptedData;
         let session_key = app.globalData.session_key;
-        loginApi.checkUserInfo(app, e.detail, iv, encryptedData, session_key, function () {
+        loginApi.checkUserInfo(app, e.detail, iv, encryptedData, session_key, function() {
             _this.getMyDate();
         });
     },
 
 
-    pageNav: function (e) {
+    pageNav: function(e) {
         let navPath = e.currentTarget.dataset.path;
         wx.navigateTo({
             url: `${navPath}`,
@@ -74,7 +79,7 @@ Page({
     },
 
 
-    formSubmit: function (e) {
+    formSubmit: function(e) {
         util.formSubmit(app, e);
     },
 })

@@ -1,7 +1,18 @@
-<view class='bg'>
+<view class='bg' wx:if="{{apiHaveLoad}}">
 
-    <view class="mubanItem">
+    <view class="mubanItem" wx:for="{{contentArr}}" wx:key="{{index}}" data-index="{{index}}" catchtap="gotomaking">
+        <image src="{{srcDomin}}/newadmin/Uploads/{{item.xiaotu_url}}" />
+    </view>
 
+    <!-- 暂时没有数据 -->
+    <view class='nocom' wx:if="{{!contentArr.length}}">
+        <image src='/assets/app/nodata.png' />
+        <view>暂时还没有数据亲~</view>
+    </view>
+
+    <!-- 加载中 -->
+    <view class='loading' wx:if="{{ifloadtxt}}">
+        加载中 . . .
     </view>
 
 </view>

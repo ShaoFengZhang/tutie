@@ -1,2 +1,39 @@
-<!--pages/classify/classify.wxml-->
-<text>pages/classify/classify.wxml</text>
+<view class="bg">
+
+    <view class="classView">
+
+        <scroll-view scroll-y style="height: 100%">
+            <view class="classBox {{index==nowClassIndex?'selectClassBox':null}}" data-id="{{item.id}}" wx:for="{{classArr}}" wx:key="{{index}}" data-index="{{index}}" catchtap="classClick">
+                {{item.txt}}
+            </view>
+        </scroll-view>
+
+
+    </view>
+
+    <view class="mubanView">
+
+        <scroll-view scroll-y style="height: 100%" bindscrolltolower="bindscrolltolower">
+            <view class="scrollContent">
+                <view class="mubanitem" data-id="{{item.id}}" wx:for="{{contentArr}}" wx:key="{{index}}" data-index="{{index}}" catchtap="gotomaking">
+                    <image src="{{srcDomin}}/newadmin/Uploads/{{item.xiaotu_url}}" />
+                </view>
+                <!-- 加载中 -->
+                <view class='loading' wx:if="{{ifloadtxt}}">
+                    加载中 . . .
+                </view>
+            </view>
+
+            <!-- 暂时没有数据 -->
+            <view class='nocom' wx:if="{{!contentArr.length && apiHaveLoad}}">
+                <image src='/assets/app/nodata.png' />
+                <view>暂时还没有数据亲~</view>
+            </view>
+
+        </scroll-view>
+
+    </view>
+
+
+
+</view>
