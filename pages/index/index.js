@@ -1,5 +1,6 @@
 import loginApi from '../../utils/login.js'
 import util from '../../utils/util.js'
+import MD5 from '../../utils/md5.js'
 const app = getApp();
 
 Page({
@@ -8,34 +9,30 @@ Page({
         hasUserInfo: false,
         canIUse: wx.canIUse('button.open-type.getUserInfo'),
         srcDomin: loginApi.srcDomin,
-        classArr:[
-            {
-                title:'节日祝福',
-                icon:'/assets/app/jiericlass.png',
-                id:12,
-                color:'(255,0,104,0.3)'
+        classArr: [{
+                title: '节日祝福',
+                icon: '/assets/app/jiericlass.png',
+                id: '12',
             },
             {
                 title: '日签制作',
                 icon: '/assets/app/riqianclass.png',
                 id: 13,
-                color: '(19,197,81,0.3)'
             },
             {
                 title: '励志海报',
                 icon: '/assets/app/lizhiclass.png',
                 id: 14,
-                color: '(0,156,255,0.3)'
             },
         ],
         apiHaveLoad: 1,
-        contentArr:[],
+        contentArr: [],
     },
 
     onLoad: function(options) {
         let _this = this;
         this.page = 1;
-        this.rows = 6;
+        this.rows = 3;
         this.cangetData = true;
 
 
@@ -76,12 +73,15 @@ Page({
             })
         };
 
-        loginApi.wxlogin(app).then(function (value) {
+        loginApi.wxlogin(app).then(function(value) {
+            if (options && options.uid) {
+                _this.fenxiangAddScore(options.uid);
+            }
         })
 
         this.getContent();
 
-        if (options && options.mubanId){
+        if (options && options.mubanId) {
             wx.navigateTo({
                 url: `/pages/making/making?mubanId=${options.mubanId}&imgurl=${options.imgurl}`,
             })
@@ -98,7 +98,7 @@ Page({
     },
 
     //处理授权信息
-    
+
 
     // 分享
     onShareAppMessage: function(e) {
@@ -137,25 +137,28 @@ Page({
     },
 
     // 上传图片
-    shangchuan:function(){
+    shangchuan: function() {
         let _this = this;
-        util.upLoadImage("shangchuan", "image", 1, this, loginApi, function (data) {
+        util.upLoadImage("shangchuan", "image", 1, this, loginApi, function(data) {
             wx.navigateTo({
-                url: `/pages/results/results?picUrl=${data.imgurl}&mubanId=${_this.data.contentArr[0].id}&imgurl=${_this.data.contentArr[0].xiaotu_url}`,
+                url: `/pages/results/results?picUrl=${data.imgurl}&mubanId=${_this.data.contentArr[0].content[0].id}&imgurl=${_this.data.contentArr[0].content[0].xiaotu_url}`,
             })
         });
     },
 
     //跳转making
-    gotomaking:function(e){
-        let { index, bindex } = e.currentTarget.dataset;
+    gotomaking: function(e) {
+        let {
+            index,
+            bindex
+        } = e.currentTarget.dataset;
         wx.navigateTo({
             url: `/pages/making/making?mubanId=${this.data.contentArr[bindex].content[index].id}&imgurl=${this.data.contentArr[bindex].content[index].xiaotu_url}`,
         })
     },
 
     //跳转固定分类
-    checkClass:function(e){
+    checkClass: function(e) {
         let id = e.currentTarget.dataset.id;
         wx.navigateTo({
             url: `/pages/classdetails/classdetails?typeid=${id}`,
@@ -163,7 +166,7 @@ Page({
     },
 
     //跳转全部分类页面
-    gotoClassify:function(){
+    gotoClassify: function() {
         wx.switchTab({
             url: `/pages/classify/classify`
         })
@@ -187,7 +190,6 @@ Page({
         loginApi.checkUserInfo(app, e.detail, iv, encryptedData, session_key)
     },
 
-
     // 获取首页数据
     getContent: function(type) {
         let _this = this;
@@ -195,7 +197,7 @@ Page({
         loginApi.requestUrl(_this, getContentUrl, "POST", {
             page: this.page,
             len: this.rows,
-            typeid:'',
+            typeid: '',
         }, function(res) {
             if (res.status == 1) {
                 if (res.contents.length < _this.rows) {
@@ -228,12 +230,6 @@ Page({
 
     //获取分类
     getClass: function() {
-        this.setData({
-            classArr: [{
-                id: "",
-                title: '推荐',
-            }]
-        })
         let _this = this;
         let getClassUrl = loginApi.domin + '/home/index/newtype';
         loginApi.requestUrl(_this, getClassUrl, "POST", {}, function(res) {
@@ -298,5 +294,23 @@ Page({
             }
         })
     },
+
+    // 判断分享加积分
+    fenxiangAddScore: function(fuid) {
+        let _this = this;
+        let fenxiangAddScoreUrl = loginApi.domin + '/home/index/newtype';
+        loginApi.requestUrl(_this, fenxiangAddScoreUrl, "POST", {
+            'uid': wx.getStorageSync('u_id'),
+            'openid': wx.getStorageSync('user_openID'),
+            'fuid': fuid,
+            'newuser': wx.getStorageSync('ifnewUser')
+        }, function(res) {
+            if (res.status == 1) {
+                _this.setData({
+                    classArr: _this.data.classArr.concat(res.type.slice(0, 3)),
+                });
+            }
+        })
+    }
 
 })

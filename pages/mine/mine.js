@@ -9,30 +9,34 @@ Page({
         hasUserInfo: false,
         canIUse: wx.canIUse('button.open-type.getUserInfo'),
         serverArr: [{
-                'icon': '/assets/app/jifeng.png',
+                'icon': '/assets/app/score.png',
                 'title': '我的积分',
                 'path': '',
             },
-            {
-                'icon': '/assets/app/shoucang.png',
-                'title': '我的收藏',
-                'path': '',
-            },
-            {
-                'icon': '/assets/app/guanzhu.png',
-                'title': '我的关注',
-                'path': '',
-            },
-            {
-                'icon': '/assets/app/bangzhu.png',
-                'title': '帮助与反馈',
-                'path': '',
-            },
+            // {
+            //     'icon': '/assets/app/shoucang.png',
+            //     'title': '我的收藏',
+            //     'path': '',
+            // },
+            // {
+            //     'icon': '/assets/app/guanzhu.png',
+            //     'title': '我的关注',
+            //     'path': '',
+            // },
+            // {
+            //     'icon': '/assets/app/bangzhu.png',
+            //     'title': '帮助与反馈',
+            //     'path': '',
+            // },
         ]
     },
 
     onLoad: function(options) {
 
+    },
+
+    onTabItemTap: function() {
+        // this.getuserScore();
     },
 
     onShow: function() {
@@ -42,6 +46,7 @@ Page({
                 hasUserInfo: true
             });
         }
+        this.getuserScore();
     },
 
 
@@ -49,7 +54,7 @@ Page({
         return util.shareObj
     },
 
-
+    // 获取用户授权信息
     getUserInfo: function(e) {
         console.log(e);
         let _this = this;
@@ -70,11 +75,31 @@ Page({
         });
     },
 
+    // 获取用户会员信心
+    getuserScore: function() {
+        let _this = this;
+        let getuserScoreUrl = loginApi.domin + '/home/index/getvip';
+        loginApi.requestUrl(_this, getuserScoreUrl, "POST", {
+            'uid': wx.getStorageSync('u_id'),
+        }, function(res) {
+            if (res.status == 1) {
+                _this.setData({
+                    isVip: res.vip,
+                    endtime: res.end.slice(0,10)
+                });
+            }
+        })
+    },
 
-    pageNav: function(e) {
-        let navPath = e.currentTarget.dataset.path;
+    gotpScore: function(e) {
         wx.navigateTo({
-            url: `${navPath}`,
+            url: `/pages/jifen/jifen`,
+        })
+    },
+
+    gotoVip: function() {
+        wx.navigateTo({
+            url: `/pages/vipHome/vipHome`,
         })
     },
 

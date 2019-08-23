@@ -1,0 +1,55 @@
+<view class="bg">
+
+    <view class="myscore">
+
+        <image src="/assets/app/jifen.png" />
+
+        <view class="scoreNumView">
+            <view style="font-size:32rpx;">可用积分</view>
+            <view style="font-size:48rpx;font-weight:bold;">{{userScore}}</view>
+
+        </view>
+
+    </view>
+
+
+    <view class="jifenhuoqu">积分获取</view>
+
+    <view class="shareAd adview">
+
+        <view class="adIcon">
+            <image src="/assets/app/shareAd.png" />
+        </view>
+
+        <view class="adtitle">
+            <view style="color:#000;font-size:36rpx;margin-bottom:10rpx;">邀请好友</view>
+            <view style="color:#999;font-size:28rpx;">邀请好友获取100积分</view>
+        </view>
+
+        <view class="adbtn">立即邀请</view>
+
+        <button id="shareBtn" open-type="share"></button>
+
+    </view>
+
+    <view class="videoAdAd adview" catchtap="adShow" wx:if="{{videoAdShow}}">
+
+        <view class="adIcon">
+            <image src="/assets/app/videoAd.png" />
+        </view>
+
+        <view class="adtitle">
+            <view style="color:#000;font-size:36rpx;margin-bottom:10rpx;">观看广告视频</view>
+            <view style="color:#999;font-size:28rpx;">观看一次视频获取50积分</view>
+        </view>
+
+        <view class="adbtn">立即观看</view>
+
+    </view>
+
+    <view class="openVip" catchtap="gotoVip">
+        <image src="/assets/app/openvip.png" />
+    </view>
+
+
+</view>

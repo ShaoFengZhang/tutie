@@ -172,6 +172,29 @@ const formSubmit = function(app, e) {
     login.requestUrl(app, collectFormIdUrl, "POST", data, function(res) {
         console.log("???????")
     })
+};
+
+//生成时间戳
+const createTimeStamp = function() {
+    return parseInt(new Date().getTime() / 1000) + ''
+};
+
+/* 随机字符串 */
+const randomString = function(){
+    var chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678'; //默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1
+    var maxPos = chars.length;
+    var pwd = '';
+    for (var i = 0; i < 32; i++) {
+        pwd += chars.charAt(Math.floor(Math.random() * maxPos));
+    }
+    return pwd;
+}
+
+// 获取xml节点信息
+const getXMLNodeValue=function (node_name, xml) {
+    var tmp = xml.split("<" + node_name + ">")
+    var _tmp = tmp[1].split("</" + node_name + ">")
+    return _tmp[0]
 }
 
 
@@ -186,4 +209,7 @@ module.exports = {
     shareObj: shareObj,
     formSubmit: formSubmit,
     javaTrim: javaTrim,
+    createTimeStamp: createTimeStamp,
+    randomString: randomString,
+    getXMLNodeValue: getXMLNodeValue,
 }

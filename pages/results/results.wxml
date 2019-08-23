@@ -2,35 +2,56 @@
 
     <view class="posterView">
 
-        <view class="imgview" style="margin: {{margintop+62}}rpx auto;">
-            <image src="{{posterUrl}}" bindload="bindload" />
-            <view class="mask"></view>
+        <view class="imgview" style="height:{{viewHeight}}rpx">
+            <image mode="widthFix" src="{{posterUrl}}"/>
         </view>
 
     </view>
 
-    <view class="btnView">
+    <view class="makeBtn">
 
-        <view class="shareBtnView">
-            <text style="color:#fff;font-size:40rpx;">送给好友</text>
-            <button id="shareBtn" open-type="share"></button>
+        <view class="changePic" style="margin-right:106rpx;" catchtap="shangchuan">
+            <image src="/assets/app/huantu.png" />
+            <text>换图</text>
         </view>
 
-        <view class="saveposter" catchtap="uploadImage">
-            <image src="/assets/app/xiazai.png" />
-            <text>保存图片</text>
+        <view class="makingView" catchtap="judgevip">
+            <image src="/assets/app/success.png" />
+            <text>生成</text>
         </view>
 
-        <!-- <view class="saveposter">
-            <image src="/assets/app/shengcheng.png" />
-            <text>生成图片</text>
-        </view> -->
-
+        <view class="wushijifen" wx:if="{{!ifVip}}">-50积分</view>
 
     </view>
 
-    <view class="reelectBtn" catchtap="shangchuan">
-        <image src="/assets/app/chongxuan.png" />
+    <view class="jifenMask" wx:if="{{ifshowMask}}" catchtap="hidejsfenMask">
+
+        <view class="maskBody">
+
+            <view style="color:#D0021B;font-size:40rpx;margin-top:60rpx;">你的积分不够啦！</view>
+            <view style="color:#282828;font-size:28rpx;margin-top:12rpx;">你可以通过以下方式获得积分</view>
+
+            <view class="adView">
+
+                <view class="shareBtn">
+                    <image src="/assets/app/shareAd.png" />
+                    <view style="width:158rpx;color:#666666;font-size:28rpx;">邀请好友 获取100积分</view>
+                    <button id="shareBtn" open-type="share"></button>
+                </view>
+
+                <view class="videoAd" catchtap="adShow">
+                    <image src="/assets/app/videoAd.png" />
+                    <view style="width:168rpx;color:#666666;font-size:28rpx;">观看广告视频 获取100积分</view>
+                </view>
+
+            </view>
+
+            <view class="maskBotAdView" catchtap="gotovip">
+                <image style="width:520rpx;height:156rpx;" src="/assets/app/maskBotAd.png" />
+            </view>
+
+        </view>
+
     </view>
 
 </view>

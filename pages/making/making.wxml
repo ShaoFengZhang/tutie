@@ -2,12 +2,16 @@
 
     <view class="topImage">
 
-        <image src="{{imgUrl}}" />
+        <view class="imageVIew" style="height:{{viewHeight}}rpx">
+            <image mode="widthFix" src="{{imgUrl}}" />
+        </view>
 
     </view>
 
-    <view class="makeBtn" catchtap="shangchuan">
-        上传1张照片 立即生成
+    <view class="makeBtn">
+
+        <view class="uploadBtn" catchtap="shangchuan">上传1张照片 立即生成</view>
+
     </view>
 
 </view>

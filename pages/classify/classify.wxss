@@ -16,7 +16,6 @@
 .classBox {
     width: 170rpx;
     height: 160rpx;
-    box-shadow: 6px 0px 0px 0px rgba(9, 115, 252, 1);
     line-height: 160rpx;
     text-align: center;
     font-size: 40rpx;

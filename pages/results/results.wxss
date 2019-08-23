@@ -3,86 +3,112 @@
     min-height: 100vh;
 }
 
-.posterView{
+.posterView {
     width: 100%;
     height: 100vh;
     background-color: #000;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
 }
 
-.imgview{
+.imgview {
     width: 580rpx;
-    height: 1032rpx;
     position: relative;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .posterView image {
-    width: 580rpx;
-    height: 1032rpx;
-    vertical-align: top;
+    width: 480rpx;
 }
 
-.mask{
+.makeBtn {
     width: 100%;
-    height: 124rpx;
-    background-color: #000;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-}
-
-.btnView {
-    width: 750rpx;
-    height: 94rpx;
-    /* height: 12vh; */
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    height: 144rpx;
+    background: #252525;
+    line-height: 144rpx;
     text-align: center;
+    color: #fff;
+    font-size: 40rpx;
     position: fixed;
-    left: 0;
     bottom: 0;
-    background: #fff;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0 98rpx 0 98rpx;
 }
 
-.shareBtnView {
-    width: 50%;
-    height: 94rpx;
-    /* height: 12vh; */
+.changePic, .makingView {
+    width: 134rpx;
+    height: 144rpx;
+}
+
+.makeBtn image {
+    width: 42rpx;
+    height: 42rpx;
+    vertical-align: middle;
+    margin-right: 12rpx;
+}
+
+.wushijifen {
+    width: 126rpx;
+    height: 44rpx;
     background: rgba(9, 115, 252, 1);
-    line-height: 94rpx;
-    /* line-height: 12vh; */
+    border-radius: 28rpx;
+    font-size: 28rpx;
+    line-height: 44rpx;
+    margin-left: 18rpx;
+}
+
+/* 积分mask */
+
+.jifenMask {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.maskBody {
+    width: 600rpx;
+    height: 710rpx;
+    background: #fff;
+    border-radius: 20rpx;
+    overflow: hidden;
+    text-align: center;
+}
+
+.adView {
+    width: 100%;
+    padding: 0 88rpx 0 110rpx;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 60rpx;
+}
+
+.shareBtn{
     position: relative;
 }
 
-.saveposter {
-    width: 50%;
-    height: 94rpx;
-    /* height: 12vh; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    color: #000;
-    font-size: 24rpx;
-}
-
-.saveposter image {
-    width: 44rpx;
-    height: 44rpx;
-}
-
-.reelectBtn image {
+.adView image {
     width: 128rpx;
     height: 128rpx;
-    border-radius: 50%;
 }
 
-.reelectBtn {
-    border-radius: 50%;
-    overflow: hidden;
-    position: fixed;
-    right: 8rpx;
-    bottom: 210rpx;
+.maskBotAdView {
+    width: 520rpx;
+    height: 128rpx;
+    margin: 64rpx auto 0;
 }

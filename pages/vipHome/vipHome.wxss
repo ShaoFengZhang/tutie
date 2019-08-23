@@ -1,0 +1,126 @@
+.bg {
+    background-color: #fff;
+}
+
+.division {
+    width: 100%;
+    height: 16rpx;
+    background: rgba(246, 246, 248, 1);
+}
+
+.vippowerView {
+    width: 100%;
+    height: 324rpx;
+    box-sizing: border-box;
+    padding: 20rpx 48rpx 40rpx 16rpx;
+}
+
+.powerList {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #282828;
+    font-size: 30rpx;
+    text-align: center;
+    margin-top: 28rpx;
+}
+
+.vippowerView image {
+    width: 120rpx;
+    height: 120rpx;
+}
+
+.topUpView {
+    width: 100%;
+    height: 552rpx;
+    box-sizing: border-box;
+    padding: 40rpx 0 0 24rpx;
+}
+
+.scrollView {
+    overflow: hidden;
+    white-space: nowrap;
+    margin-top: 40rpx;
+}
+
+.priceView {
+    display: inline-block;
+    width: 180rpx;
+    height: 240rpx;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 8rpx;
+    border: 2rpx solid rgba(231, 231, 231, 1);
+    margin-right: 20rpx;
+    text-align: center;
+    padding: 40rpx 0 36rpx 0;
+    position: relative;
+}
+
+.priceViewSelect {
+    border:2rpx solid rgba(210,157,98,1);
+    background: rgba(255, 246, 235, 1);
+}
+
+.tuijianView {
+    width: 116rpx;
+    height: 36rpx;
+    font-size: 24rpx;
+    font-family: PingFangSC;
+    font-weight: 500;
+    color: #fff;
+    line-height: 36rpx;
+    background-color: #fa0b00;
+    border-radius: 8rpx;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.kaitongBtn {
+    width: 686rpx;
+    height: 96rpx;
+    background: linear-gradient(83deg, rgba(247, 191, 127, 1) 0%, rgba(204, 143, 83, 1) 100%);
+    border-radius: 8rpx;
+    margin: 40rpx 0 0 8rpx;
+    color: #fff;
+    text-align: center;
+    line-height: 96rpx;
+    font-size: 48rpx;
+    font-weight: bold;
+}
+
+.mubanView {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 40rpx 24rpx 24rpx;
+}
+
+.huiyuantuijian {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mubanListView {
+    width: 100%;
+    margin-top: 20rpx;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.mubanItem, .mubanItem image {
+    width: 220rpx;
+    height: 350rpx;
+    border-radius: 8rpx;
+}
+
+.mubanItem {
+    margin-bottom: 20rpx;
+    margin-right: 18rpx;
+}
+
+.mubanItem:nth-of-type(3n+0) {
+    margin-right: 0rpx;
+}

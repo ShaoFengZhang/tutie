@@ -10,14 +10,12 @@ image {
 /* 顶部上传图片 */
 
 .topUploadView {
-    width: 710rpx;
-    height: 270rpx;
     margin: 8rpx auto 0;
 }
 
-.topUploadView image {
-    width: 710rpx;
-    height: 270rpx;
+.topUploadView image,.topUploadView {
+    width: 722rpx;
+    height: 302rpx;
 }
 
 /* 分类部分 */
@@ -25,7 +23,7 @@ image {
 .classView {
     width: 710rpx;
     height: 148rpx;
-    margin: 48rpx auto 0;
+    margin: 0rpx auto;
     display: flex;
     justify-content: space-between;
 }
@@ -35,6 +33,7 @@ image {
     height: 148rpx;
     text-align: center;
     font-size: 28rpx;
+    color:#666;
 }
 
 .classItem image {

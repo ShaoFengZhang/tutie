@@ -5,7 +5,9 @@
         "pages/mine/mine",
         "pages/classdetails/classdetails",
         "pages/making/making",
-        "pages/results/results"
+        "pages/results/results",
+        "pages/vipHome/vipHome",
+        "pages/jifen/jifen"
     ],
     "window": {
         "backgroundTextStyle": "light",

@@ -1,7 +1,7 @@
 <view class="bg" wx:if="{{apiHaveLoad}}">
 
     <!-- 顶部上传 -->
-    <view class="topUploadView" catchtap="shangchuan">
+    <view class="topUploadView">
         <image src="/assets/app/homeUpload.png" />
     </view>
 
@@ -9,14 +9,14 @@
     <view class="classView">
         <view class="classItem" data-id="{{item.id}}" wx:for="{{classArr}}" wx:key="{{index}}" catchtap="checkClass">
             <view>
-                <image src="{{item.icon}}" style="box-shadow:0px 8rpx 16rpx 0px rgba{{item.color}};" />
+                <image src="{{item.icon}}"/>
             </view>
             <view>{{item.title}}</view>
         </view>
 
         <view class="classItem" catchtap="gotoClassify">
             <view>
-                <image src="/assets/app/allclass.png" style="box-shadow:0px 8rpx 16rpx 0px rgba(252,99,10,0.3); " />
+                <image src="/assets/app/allclass.png" />
             </view>
             <view>全部分类</view>
         </view>

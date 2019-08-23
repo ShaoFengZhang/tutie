@@ -1,0 +1,80 @@
+.bg {
+    background-color: #fff;
+    overflow: hidden;
+}
+
+image {
+    vertical-align: middle;
+}
+
+.myscore {
+    margin: 40rpx auto 0;
+    position: relative;
+    color: #fff;
+    text-align: center;
+}
+
+.myscore image, .myscore {
+    width: 750rpx;
+    height: 316rpx;
+    border-radius: 8rpx;
+}
+
+.scoreNumView {
+    width: 100%;
+    position: absolute;
+    top: 98rpx;
+    left: 0;
+}
+
+.jifenhuoqu {
+    color: #000;
+    font-size: 40rpx;
+    font-weight: 600;
+    box-sizing: border-box;
+    padding: 0 0 0 40rpx;
+    margin-top: 20rpx;
+    font-family: PingFangSC;
+}
+
+.adview {
+    width: 670rpx;
+    height: 128rpx;
+    margin: 40rpx auto 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+}
+
+.adIcon, .adIcon image {
+    width: 128rpx;
+    height: 128rpx;
+}
+
+.adtitle {
+    width: 320rpx;
+    margin-left: 24rpx;
+}
+
+.adbtn {
+    width: 176rpx;
+    height: 60rpx;
+    background: rgba(9, 115, 252, 1);
+    box-shadow: 0px 8rpx 16rpx 0px rgba(9, 115, 252, 0.3);
+    border-radius: 30rpx;
+    text-align: center;
+    line-height: 60rpx;
+    color: #fff;
+    font-size: 28rpx;
+    margin-left: 16rpx;
+}
+
+.openVip,.openVip image{
+    width: 718rpx;
+    height: 176rpx;
+}
+
+.openVip{
+    margin: 66rpx auto 0;
+}

@@ -1,6 +1,6 @@
 <view class='bg'>
 
-    <view class="userInfoView">
+    <view class="userInfoView" catchtap="gotoVip">
 
         <view class="userIocn">
             <open-data type="userAvatarUrl"></open-data>
@@ -11,24 +11,39 @@
                 <view class="username oneEllipsis">
                     <open-data type="userNickName"></open-data>
                 </view>
-                <image src="/assets/app/huiyuan.png" style="width:40rpx;height:40rpx;" />
+                <image wx:if="{{isVip}}" src="/assets/app/huiyuan.png" style="width:40rpx;height:40rpx;" />
             </view>
-            <view style="color:#999;font-size:30rpx;margin-top:6rpx;">2019-10-19到期</view>
+            <view style="color:#999;font-size:28rpx;margin-top:6rpx;">
+                {{isVip?endtime+'到期':'点击开通会员'}}
+            </view>
         </view>
 
         <view class="renewalBtn">
-            续费
+            {{isVip?'续费':'开通会员'}}
         </view>
+
+    </view>
+
+    <view class="serverItem" catchtap="gotoVip" style="margin-top:16rpx;">
+
+        <image style="width:48rpx;height:48rpx;margin-right:32rpx;" src="/assets/app/minehuiyuan.png" />
+
+        <view class="huiyuanTxtView" style="width:550rpx;">
+            <text>会员免费畅玩</text>
+            <text style="color:#B2B2B2;font-size:24rpx;">低至2.6元一天</text>
+        </view>
+
+        <image style="width:60rpx;height:60rpx;" src="/assets/app/right.png" />
 
     </view>
 
     <view class="serverListView">
 
-        <view class="serverItem" wx:for="{{serverArr}}" wx:key="{{index}}">
+        <view class="serverItem" catchtap="gotpScore">
 
-            <image style="width:48rpx;height:48rpx;margin-right:32rpx;" src="{{item.icon}}" />
+            <image style="width:48rpx;height:48rpx;margin-right:32rpx;" src="/assets/app/score.png" />
 
-            <view style="width:550rpx">{{item.title}}</view>
+            <view style="width:550rpx">我的积分</view>
 
             <image style="width:60rpx;height:60rpx;" src="/assets/app/right.png" />
 
@@ -36,13 +51,15 @@
 
     </view>
 
-    <view class="shengming serverItem">
+
+
+    <!-- <view class="shengming serverItem">
         <image style="width:48rpx;height:48rpx;margin-right:32rpx;" src="/assets/app/mianze.png" />
 
         <view style="width:550rpx">免责声明</view>
 
         <image style="width:60rpx;height:60rpx;" src="/assets/app/right.png" />
-    </view>
+    </view> -->
 
 
 

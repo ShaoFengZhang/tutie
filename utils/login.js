@@ -27,6 +27,7 @@ const wxlogin = function(app) {
                             app.globalData.session_key = value.data.session_key;
                             wx.setStorageSync('user_openID', value.data.openid);
                             wx.setStorageSync('u_id', value.data.uid);
+                            wx.setStorageSync('ifnewUser', value.data.newuser);
                             getSettingfnc(app);
                             // console.log(value, "login");
                             resolve(value);
@@ -147,7 +148,7 @@ const requestUrl = (app, url, method, data, cb) => {
         data: data,
         method: method,
         success: function(resdata) {
-            wx.hideLoading();
+            // wx.hideLoading();
             // console.log(url, resdata);
             app.netBlock = 0;
             cb(resdata.data);

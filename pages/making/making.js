@@ -13,8 +13,9 @@ Page({
             this.mubanId = options.mubanId;
             this.imgurl = options.imgurl;
             this.setData({
-                imgUrl: loginApi.srcDomin + '/newadmin/Uploads/' + options.imgurl
-            })
+                imgUrl: loginApi.srcDomin + '/newadmin/Uploads/' + options.imgurl,
+                viewHeight: ((app.windowHeight + app.Bheight) * 750 / app.sysWidth - 144),
+            });
         }
     },
 
