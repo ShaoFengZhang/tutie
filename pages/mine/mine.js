@@ -85,7 +85,8 @@ Page({
             if (res.status == 1) {
                 _this.setData({
                     isVip: res.vip,
-                    endtime: res.end.slice(0,10)
+                    endtime: res.end.slice(0,10),
+                    zhongshen: res.zhongshen,
                 });
             }
         })
