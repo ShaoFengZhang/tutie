@@ -139,9 +139,11 @@ Page({
     // 上传图片
     shangchuan: function() {
         let _this = this;
+        let index = Math.floor(Math.random()*8);
+        let bindex = Math.floor(Math.random()*3);
         util.upLoadImage("shangchuan", "image", 1, this, loginApi, function(data) {
             wx.navigateTo({
-                url: `/pages/results/results?picUrl=${data.imgurl}&mubanId=${_this.data.contentArr[0].content[0].id}&imgurl=${_this.data.contentArr[0].content[0].xiaotu_url}`,
+                url: `/pages/results/results?picUrl=${data.imgurl}&mubanId=${_this.data.contentArr[index].content[bindex].id}&imgurl=${_this.data.contentArr[index].content[bindex].xiaotu_url}`,
             })
         });
     },
@@ -153,7 +155,7 @@ Page({
             bindex
         } = e.currentTarget.dataset;
         wx.navigateTo({
-            url: `/pages/making/making?mubanId=${this.data.contentArr[bindex].content[index].id}&imgurl=${this.data.contentArr[bindex].content[index].xiaotu_url}`,
+            url: `/pages/making/making?mubanId=${this.data.contentArr[bindex].content[index].id}&imgurl=${this.data.contentArr[bindex].content[index].xiaotu_url}&type=${this.data.contentArr[bindex].content[index].type}`,
         })
     },
 

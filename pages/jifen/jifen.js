@@ -27,6 +27,17 @@ Page({
                 })
             });
         }
+
+        wx.getSystemInfo({
+            success(res) {
+                console.log(res);
+                if (res.system.slice(0, 3) == 'iOS') {
+                    _this.setData({
+                        huiyuanhide: 1,
+                    })
+                }
+            }
+        });
     },
 
     onShow: function() {},

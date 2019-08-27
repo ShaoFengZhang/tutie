@@ -7,7 +7,9 @@
         "pages/making/making",
         "pages/results/results",
         "pages/vipHome/vipHome",
-        "pages/jifen/jifen"
+        "pages/jifen/jifen",
+        "pages/cutout/cutout",
+        "pages/tabMaking/tabMaking"
     ],
     "window": {
         "backgroundTextStyle": "light",
@@ -26,6 +28,12 @@
                 "iconPath": "/assets/app/home-noselect.png",
                 "text": "首页",
                 "selectedIconPath": "/assets/app/home-select.png"
+            },
+            {
+                "pagePath": "pages/tabMaking/tabMaking",
+                "iconPath": "/assets/app/make.png",
+                "text": "制作",
+                "selectedIconPath": "/assets/app/makeselect.png"
             },
             {
                 "pagePath": "pages/classify/classify",

@@ -11,7 +11,6 @@
     <view class="makeBtn">
 
         <view wx:if="{{imgtype!=15}}" class="uploadBtn" catchtap="shangchuan">上传1张照片 立即生成</view>
-        <!-- <view wx:if="{{imgtype!=15}}" class="uploadBtn" catchtap="cutOutshangchuan">上传1张照片 立即生成</view> -->
         <view wx:if="{{imgtype==15}}" class="uploadBtn" catchtap="cutOutshangchuan">上传1张照片 立即生成</view>
 
     </view>

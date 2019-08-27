@@ -1,0 +1,125 @@
+.bg {
+    min-height: 100vh;
+    background-color: #000;
+    overflow: hidden;
+}
+
+/* 底部按钮 */
+
+.makeBtn {
+    width: 100%;
+    height: 144rpx;
+    background: #252525;
+    line-height: 144rpx;
+    text-align: center;
+    color: #fff;
+    font-size: 40rpx;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0 98rpx 0 98rpx;
+    z-index: 9999;
+}
+
+.changePic, .makingView {
+    width: 134rpx;
+    height: 144rpx;
+}
+
+.makeBtn image {
+    width: 42rpx;
+    height: 42rpx;
+    vertical-align: middle;
+    margin-right: 12rpx;
+}
+
+.wushijifen {
+    width: 126rpx;
+    height: 44rpx;
+    background: rgba(9, 115, 252, 1);
+    border-radius: 28rpx;
+    font-size: 28rpx;
+    line-height: 44rpx;
+    margin-left: 18rpx;
+}
+
+/* 移动区域 */
+
+.contentWarp {
+    position:relative;
+    width: 686rpx;
+    height: 922rpx;
+    margin: 40rpx auto 0;
+    background-color: #d1e3f1;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.touchWrap {
+    transform-origin: center;
+    position: absolute;
+    z-index: 100;
+}
+
+.imgWrap {
+    box-sizing: border-box;
+    width: 100%;
+    transform-origin: center;
+    float: left;
+    border: 5rpx transparent dashed;
+}
+
+.imgWrap image {
+    float: left;
+}
+
+.touchActive .x {
+    display: block;
+}
+
+.touchActive .o {
+    display: block;
+}
+
+.x {
+    position: absolute;
+    top: -25rpx;
+    left: -25rpx;
+    z-index: 500;
+    display: none;
+    width: 50rpx;
+    height: 50rpx;
+    overflow: hidden;
+    font-weight: bold;
+    color: #d1e3f1;
+}
+
+.o {
+    position: absolute;
+    bottom: -25rpx;
+    right: -25rpx;
+    width: 50rpx;
+    height: 50rpx;
+    text-align: center;
+    display: none;
+    overflow: hidden;
+    font-weight: bold;
+    color: #d1e3f1;
+}
+
+.active {
+    background-color: rgb(78, 114, 151);
+}
+
+.active view {
+    border: none;
+}
+
+.touchActive {
+    /* border: 4rpx #fff dashed; */
+    /* z-index: 400; */
+}

@@ -47,7 +47,7 @@
 
     </view>
 
-    <view class="openVip" catchtap="gotoVip">
+    <view class="openVip" catchtap="gotoVip" wx:if="{{!huiyuanhide}}">
         <image src="/assets/app/openvip.png" />
     </view>
 

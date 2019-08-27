@@ -1,7 +1,7 @@
 <view class="bg" wx:if="{{apiHaveLoad}}">
 
     <!-- 顶部上传 -->
-    <view class="topUploadView">
+    <view class="topUploadView" catchtap="shangchuan">
         <image src="/assets/app/homeUpload.png" />
     </view>
 

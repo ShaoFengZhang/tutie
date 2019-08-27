@@ -32,7 +32,17 @@ Page({
     },
 
     onLoad: function(options) {
-
+        let _this=this;
+        wx.getSystemInfo({
+            success(res) {
+                console.log(res);
+                if (res.system.slice(0, 3) =='iOS'){
+                    _this.setData({
+                        huiyuanhide:1,
+                    })
+                }
+            }
+        });
     },
 
     onTabItemTap: function() {
@@ -99,6 +109,9 @@ Page({
     },
 
     gotoVip: function() {
+        if (this.data.huiyuanhide){
+            return;
+        }
         wx.navigateTo({
             url: `/pages/vipHome/vipHome`,
         })

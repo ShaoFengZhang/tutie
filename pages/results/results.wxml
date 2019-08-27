@@ -26,7 +26,7 @@
 
     <view class="jifenMask" wx:if="{{ifshowMask}}" catchtap="hidejsfenMask">
 
-        <view class="maskBody">
+        <view class="maskBody" style="height:{{huiyuanhide?580:710}}rpx">
 
             <view style="color:#D0021B;font-size:40rpx;margin-top:60rpx;">你的积分不够啦！</view>
             <view style="color:#282828;font-size:28rpx;margin-top:12rpx;">你可以通过以下方式获得积分</view>
@@ -46,7 +46,7 @@
 
             </view>
 
-            <view class="maskBotAdView" catchtap="gotovip">
+            <view class="maskBotAdView" catchtap="gotovip" wx:if="{{!huiyuanhide}}">
                 <image style="width:520rpx;height:156rpx;" src="/assets/app/maskBotAd.png" />
             </view>
 

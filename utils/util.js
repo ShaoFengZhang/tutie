@@ -20,7 +20,7 @@ const formatNumber = n => {
 const shareObj = {
     title: "@你，给你留了一段话，快来看看吧~",
     path: `/pages/index/index?uid=${wx.getStorageSync("u_id")}&type=2`,
-    imageUrl: `/assets/shareimg/img.png`
+    // imageUrl: `/assets/shareimg/img.png`
 }
 
 const loding = function(args) {

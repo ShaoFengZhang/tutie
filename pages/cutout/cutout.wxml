@@ -1,0 +1,36 @@
+<view class="bg">
+
+
+    <view class='contentWarp' style="background-image: url({{dituimg}}) ">
+        <!-- *************操作区域*************  -->
+        <block wx:for="{{itemList}}" wx:key="{{item.id}}">
+        <!-- 圆心坐标  -->
+            <text style='position:absolute;top:{{item.y}}px;left:{{item.x}}px;width:2px;height:2px;background-color:yellow;z-index:500'></text>
+            <view class='touchWrap' style='transform: scale({{item.scale}});top:{{item.top}}px;left:{{item.left}}px;'>
+                <view class='imgWrap {{item.active? "touchActive":""}}' style="transform: rotate({{item.angle}}deg); border: {{item.active?4*item.oScale:0}}rpx #fff dashed;">
+                    <image src='{{item.image}}' data-id='{{item.id}}' style='width:{{item.width}}px;height:{{item.height}}px;' bindtouchstart='WraptouchStart' bindtouchmove='WraptouchMove' bindtouchend='WraptouchEnd'></image>
+                    <!-- <image class='x' src='/assets/app/xuanzhuan.png' style='transform: scale({{item.oScale}});transform-origin:center;' data-id='{{item.id}}' bindtap='deleteItem'></image> -->
+                    <image class='o' src='/assets/app/xuanzhuan.png' style='transform: scale({{item.oScale}});transform-origin:center;' data-id='{{item.id}}' bindtouchstart='oTouchStart' bindtouchmove='oTouchMove'></image>
+                </view>
+            </view>
+        </block>
+        <!-- **************操作区域************  -->
+    </view>
+
+    <view class="makeBtn">
+
+        <view class="changePic" style="margin-right:106rpx;" catchtap="shangchuan">
+            <image src="/assets/app/huantu.png" />
+            <text>换图</text>
+        </view>
+
+        <view class="makingView" catchtap="judgevip">
+            <image src="/assets/app/success.png" />
+            <text>生成</text>
+        </view>
+
+        <view class="wushijifen" wx:if="{{!ifVip}}">-50积分</view>
+
+    </view>
+
+</view>

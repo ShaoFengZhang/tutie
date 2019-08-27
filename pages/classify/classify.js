@@ -81,7 +81,7 @@ Page({
     gotomaking: function(e) {
         let index = e.currentTarget.dataset.index;
         wx.navigateTo({
-            url: `/pages/making/making?mubanId=${this.data.contentArr[index].id}&imgurl=${this.data.contentArr[index].xiaotu_url}`,
+            url: `/pages/making/making?mubanId=${this.data.contentArr[index].id}&imgurl=${this.data.contentArr[index].xiaotu_url}&type=${this.data.contentArr[index].type}`,
         })
     },
 

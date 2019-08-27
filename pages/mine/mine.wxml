@@ -13,18 +13,18 @@
                 </view>
                 <image wx:if="{{isVip}}" src="/assets/app/huiyuan.png" style="width:40rpx;height:40rpx;" />
             </view>
-            <view style="color:#999;font-size:28rpx;margin-top:6rpx;">
+            <view style="color:#999;font-size:28rpx;margin-top:6rpx;" wx:if="{{!huiyuanhide}}">
                 {{isVip?endtime:'点击开通会员'}}<text wx:if="{{isVip &&!zhongshen}}">到期</text>
             </view>
         </view>
 
-        <view class="renewalBtn">
+        <view class="renewalBtn" wx:if="{{!huiyuanhide}}">
             {{isVip?'续费':'开通会员'}}
         </view>
 
     </view>
 
-    <view class="serverItem" catchtap="gotoVip" style="margin-top:16rpx;">
+    <view class="serverItem" catchtap="gotoVip" style="margin-top:16rpx;"  wx:if="{{!huiyuanhide}}">
 
         <image style="width:48rpx;height:48rpx;margin-right:32rpx;" src="/assets/app/minehuiyuan.png" />
 
