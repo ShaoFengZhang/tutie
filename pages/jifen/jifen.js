@@ -13,21 +13,6 @@ Page({
     onLoad: function(options) {
         let _this = this;
         this.getuserScoreInfo();
-
-        this.videoAd = null
-
-        if (wx.createRewardedVideoAd) {
-            this.videoAd = wx.createRewardedVideoAd({
-                adUnitId: 'adunit-2e26b10a522cfcef'
-            })
-            this.videoAd.onLoad(() => {})
-            this.videoAd.onError((err) => {
-                _this.setData({
-                    videoAdShow: 0,
-                })
-            });
-        }
-
         wx.getSystemInfo({
             success(res) {
                 console.log(res);
@@ -38,6 +23,30 @@ Page({
                 }
             }
         });
+
+        // 激励广告
+        this.videoAd = null;
+        if (wx.createRewardedVideoAd) {
+            this.videoAd = wx.createRewardedVideoAd({
+                adUnitId: 'adunit-2e26b10a522cfcef'
+            })
+            this.videoAd.onLoad(() => { })
+            this.videoAd.onError((err) => {
+                _this.setData({
+                    videoAdShow: 0,
+                })
+            });
+            this.videoAd.onClose(res => {
+                // 用户点击了【关闭广告】按钮
+                if (res && res.isEnded) {
+                    //完整观看
+                    _this.addScore()
+                } else {
+                    util.toast('需要完整观看视频哦~')
+                }
+            })
+        };
+        
     },
 
     onShow: function() {},
@@ -50,24 +59,18 @@ Page({
     //观看广告
     adShow: function() {
         let _this = this;
+        util.loding()
         if (this.videoAd) {
-            this.videoAd.show().catch(() => {
+            this.videoAd.show().then(() => wx.hideLoading()).catch(() => {
                 // 失败重试
                 this.videoAd.load()
                     .then(() => this.videoAd.show())
                     .catch(err => {
+                        util.toast('今天观看广告次数已耗尽~')
                         console.log('激励视频 广告显示失败')
                     })
             });
-            this.videoAd.onClose(res => {
-                // 用户点击了【关闭广告】按钮
-                if (res && res.isEnded) {
-                    //完整观看
-                    _this.addScore()
-                } else {
-                    util.toast('需要完整观看视频哦~')
-                }
-            })
+            
         }
     },
 
@@ -94,6 +97,7 @@ Page({
     },
 
     addScore: function() {
+        util.loding('正在领取积分')
         let _this = this;
         let addScoreUrl = loginApi.domin + '/home/index/video_plus';
         loginApi.requestUrl(_this, addScoreUrl, "POST", {

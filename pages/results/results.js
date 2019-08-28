@@ -21,7 +21,6 @@ Page({
             }
         });
 
-
         console.log(options);
         this.getuserScore();
         this.setData({
@@ -37,8 +36,8 @@ Page({
             this.generatePoster();
         };
 
-        this.videoAd = null
 
+        this.videoAd = null
         if (wx.createRewardedVideoAd) {
             this.videoAd = wx.createRewardedVideoAd({
                 adUnitId: 'adunit-2e26b10a522cfcef'
@@ -49,7 +48,17 @@ Page({
                     videoAdShow: 0,
                 })
             });
+            this.videoAd.onClose(res => {
+                // 用户点击了【关闭广告】按钮
+                if (res && res.isEnded) {
+                    //完整观看
+                    _this.addScore()
+                } else {
+                    util.toast('需要完整观看视频哦~')
+                }
+            })
         }
+
     },
 
     onShow: function() {},
@@ -70,29 +79,23 @@ Page({
     //观看广告
     adShow: function () {
         let _this = this;
+        util.loding()
         if (this.videoAd) {
-            this.videoAd.show().catch(() => {
+            this.videoAd.show().then(() => wx.hideLoading()).catch(() => {
                 // 失败重试
                 this.videoAd.load()
                     .then(() => this.videoAd.show())
                     .catch(err => {
+                        util.toast('今天观看广告次数已耗尽~')
                         console.log('激励视频 广告显示失败')
                     })
             });
-            this.videoAd.onClose(res => {
-                // 用户点击了【关闭广告】按钮
-                if (res && res.isEnded) {
-                    //完整观看
-                    _this.addScore()
-                } else {
-                    util.toast('需要完整观看视频哦~')
-                }
-            })
         }
     },
 
     // 加积分
     addScore: function () {
+        util.loding('正在领取积分')
         let _this = this;
         let addScoreUrl = loginApi.domin + '/home/index/video_plus';
         loginApi.requestUrl(_this, addScoreUrl, "POST", {
@@ -137,7 +140,7 @@ Page({
         })
     },
 
-    // 获取用户会员信心
+    // 获取用户会员信息
     getuserScore: function () {
         let _this = this;
         let getuserScoreUrl = loginApi.domin + '/home/index/getvip';
@@ -230,13 +233,14 @@ Page({
     // 保存图片
     saveImage: function(src) {
         let _this = this;
-
+        util.loding('全力保存中')
         wx.getImageInfo({
             src: src,
             success(res) {
                 wx.saveImageToPhotosAlbum({
                     filePath: res.path,
                     success: function() {
+                        wx.hideLoading();
                         wx.showModal({
                             title: '保存成功',
                             content: `记得分享哦~`,
@@ -249,6 +253,7 @@ Page({
                         });
                     },
                     fail: function(data) {
+                        wx.hideLoading();
                         wx.previewImage({
                             urls: [res.path]
                         })

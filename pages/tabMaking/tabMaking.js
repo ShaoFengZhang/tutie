@@ -6,6 +6,9 @@ Page({
 
     data: {
         srcDomin: loginApi.srcDomin,
+        userInfo: {},
+        hasUserInfo: false,
+        canIUse: wx.canIUse('button.open-type.getUserInfo'),
     },
 
     onLoad: function (options) {
@@ -98,5 +101,23 @@ Page({
 
             }
         })
+    },
+
+    // 获取授权信息
+    getUserInfo: function (e) {
+        console.log(e);
+        if (!e.detail.userInfo) {
+            util.toast("我们需要您的授权哦亲~", 1200)
+            return
+        }
+        app.globalData.userInfo = e.detail.userInfo
+        this.setData({
+            userInfo: e.detail.userInfo,
+            hasUserInfo: true
+        });
+        let iv = e.detail.iv;
+        let encryptedData = e.detail.encryptedData;
+        let session_key = app.globalData.session_key;
+        loginApi.checkUserInfo(app, e.detail, iv, encryptedData, session_key)
     },
 })

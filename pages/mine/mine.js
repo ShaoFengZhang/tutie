@@ -81,7 +81,7 @@ Page({
         let encryptedData = e.detail.encryptedData;
         let session_key = app.globalData.session_key;
         loginApi.checkUserInfo(app, e.detail, iv, encryptedData, session_key, function() {
-            _this.getMyDate();
+           
         });
     },
 
