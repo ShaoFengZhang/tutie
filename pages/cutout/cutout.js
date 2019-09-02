@@ -29,23 +29,33 @@ Page({
             });
         };
 
-        this.videoAd = null;
-
+        this.videoAd = null
         if (wx.createRewardedVideoAd) {
             this.videoAd = wx.createRewardedVideoAd({
                 adUnitId: 'adunit-2e26b10a522cfcef'
             })
-            this.videoAd.onLoad(() => {})
+            this.videoAd.onLoad(() => { })
             this.videoAd.onError((err) => {
                 _this.setData({
                     videoAdShow: 0,
                 })
             });
-        };
+            this.videoAd.onClose(res => {
+                // 用户点击了【关闭广告】按钮
+                if (res && res.isEnded) {
+                    //完整观看
+                    _this.addScore()
+                } else {
+                    util.toast('需要完整观看视频哦~')
+                }
+            })
+        }
 
     },
 
-    onShow: function() {},
+    onShow: function() {
+        
+    },
 
     onShareAppMessage: function() {
         return {
@@ -60,26 +70,19 @@ Page({
     },
 
     //观看广告
-    adShow: function() {
+    adShow: function () {
         let _this = this;
+        util.loding()
         if (this.videoAd) {
-            this.videoAd.show().catch(() => {
+            this.videoAd.show().then(() => wx.hideLoading()).catch(() => {
                 // 失败重试
                 this.videoAd.load()
                     .then(() => this.videoAd.show())
                     .catch(err => {
+                        util.toast('今天观看广告次数已耗尽~')
                         console.log('激励视频 广告显示失败')
                     })
             });
-            this.videoAd.onClose(res => {
-                // 用户点击了【关闭广告】按钮
-                if (res && res.isEnded) {
-                    //完整观看
-                    _this.addScore()
-                } else {
-                    util.toast('需要完整观看视频哦~')
-                }
-            })
         }
     },
 
@@ -108,13 +111,27 @@ Page({
 
     //生成海报
     generatePoster: function() {
+        if (this.data.ifVip) {
+        };
+
+        if (this.data.userScore >= 50) {
+        } else {
+            this.setData({
+                ifshowMask: 1,
+            });
+            return;
+        }
         util.loding('全速生成中')
         let _this = this;
-        let generatePosterUrl = loginApi.domin + '/home/index/huatu';
+        let generatePosterUrl = loginApi.domin + '/home/index/shengchengrenxiang';
         loginApi.requestUrl(_this, generatePosterUrl, "POST", {
-            "imgurl": this.picUrl,
+            "imgurl": this.data.peopleUrl,
             'id': this.mubanId,
             'uid': wx.getStorageSync('u_id'),
+            'x': this.data.itemList[0].x - (this.data.itemList[0].width * this.data.itemList[0].scale/2),
+            'y': this.data.itemList[0].y - (this.data.itemList[0].height * this.data.itemList[0].scale/2),
+            'w': this.data.itemList[0].width * this.data.itemList[0].scale,
+            'h': this.data.itemList[0].height * this.data.itemList[0].scale,
         }, function(res) {
             if (res.status == 1) {
                 _this.setData({
@@ -124,7 +141,38 @@ Page({
                 _this.tongjihaibao(_this.mubanId);
                 setTimeout(function() {
                     wx.hideLoading();
+                    _this.judgevip();
                 }, 600)
+            }
+        })
+    },
+
+    // 抠图上传图片
+    cutOutshangchuan: function () {
+        let _this = this;
+        util.upLoadImage("uploadrenxiang", "image", 1, this, loginApi, function (data) {
+            _this.cutoutimg(data.imgurl);
+        });
+    },
+
+    //抠图接口
+    cutoutimg: function (url) {
+        util.loding('加载中')
+        let _this = this;
+        let cutoutimgUrl = loginApi.domin + '/home/index/koutu';
+        loginApi.requestUrl(_this, cutoutimgUrl, "POST", {
+            'imgurl': url,
+        }, function (res) {
+            if (res.status == 1) {
+                wx.hideLoading();
+                _this.setData({
+                    peopleUrl: res.imgurl,
+                    itemList: [],
+                });
+                items = _this.data.itemList;
+                _this.setDropItem({
+                    url: res.imgurl,
+                });
             }
         })
     },
@@ -272,14 +320,15 @@ Page({
 
     // 初始化图片
     setDropItem(imgData) {
+        util.loding('读取人像中~')
         let data = {},
             _this = this;
         wx.getImageInfo({
             src: imgData.url,
             success: res => {
                 // 初始化数据
-                data.width = res.width; //宽度
-                data.height = res.height; //高度
+                data.width = res.width>300?res.width*0.4:res.width; //宽度
+                data.height = res.height > 300 ? res.height * 0.4 : res.height; //高度
                 data.image = imgData.url; //地址
                 data.top = 0; //top定位
                 data.left = 0; //left定位
@@ -294,7 +343,8 @@ Page({
                 items[items.length] = data;
                 _this.setData({
                     itemList: items
-                })
+                });
+                wx.hideLoading();
             }
         })
     },
@@ -334,7 +384,7 @@ Page({
         items[index].tx = e.touches[0].clientX;
         items[index].ty = e.touches[0].clientY;
         //移动前的角度
-        items[index].anglePre = this.countDeg(items[index].x, items[index].y, items[index].tx, items[index].ty)
+        // items[index].anglePre = this.countDeg(items[index].x, items[index].y, items[index].tx, items[index].ty)
         //获取图片半径
         items[index].r = this.getDistancs(items[index].x, items[index].y, items[index].left, items[index].top);
         console.log(items[index])
@@ -354,27 +404,30 @@ Page({
         items[index].disPtoO = this.getDistancs(items[index].x, items[index].y, items[index]._tx, items[index]._ty - 10)
 
         items[index].scale = items[index].disPtoO / items[index].r;
-        items[index].oScale = 1 / items[index].scale;
+        // items[index].oScale = 1 / items[index].scale;
 
         //移动后位置的角度
-        items[index].angleNext = this.countDeg(items[index].x, items[index].y, items[index]._tx, items[index]._ty)
+        // items[index].angleNext = this.countDeg(items[index].x, items[index].y, items[index]._tx, items[index]._ty)
         //角度差
-        items[index].new_rotate = items[index].angleNext - items[index].anglePre;
+        // items[index].new_rotate = items[index].angleNext - items[index].anglePre;
 
         //叠加的角度差
-        items[index].rotate += items[index].new_rotate;
-        items[index].angle = items[index].rotate; //赋值
+        // items[index].rotate += items[index].new_rotate;
+        // items[index].angle = items[index].rotate; //赋值
 
         //用过移动后的坐标赋值为移动前坐标
         items[index].tx = e.touches[0].clientX;
         items[index].ty = e.touches[0].clientY;
-        items[index].anglePre = this.countDeg(items[index].x, items[index].y, items[index].tx, items[index].ty)
+        // items[index].anglePre = this.countDeg(items[index].x, items[index].y, items[index].tx, items[index].ty)
 
         //赋值setData渲染
         this.setData({
             itemList: items
         })
         console.log(items)
+    },
+    WraptouchEnd:function(){
+
     },
     getDistancs(cx, cy, pointer_x, pointer_y) {
         var ox = pointer_x - cx;
@@ -408,6 +461,12 @@ Page({
             angle = 180 - angle;
         }
         return angle;
+    },
+
+    hidejsfenMask: function () {
+        this.setData({
+            ifshowMask: 0,
+        })
     },
 
 })

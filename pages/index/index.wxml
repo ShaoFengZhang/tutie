@@ -3,21 +3,33 @@
     <!-- 顶部上传 -->
     <view class="topUploadView" catchtap="shangchuan">
         <image src="/assets/app/homeUpload.png" />
+        <form bindsubmit="formSubmit" report-submit="{{true}}">
+            <button formType="submit" class='Sbtn'>
+            </button>
+        </form>
     </view>
 
     <!-- 四个分类标签 -->
     <view class="classView">
-        <view class="classItem" data-id="{{item.id}}" wx:for="{{classArr}}" wx:key="{{index}}" catchtap="checkClass">
+        <view class="classItem" data-id="{{item.typeid}}" wx:for="{{topclassArr}}" wx:key="{{index}}" catchtap="checkClass">
             <view>
-                <image src="{{item.icon}}"/>
+                <image src="{{item.img}}" />
             </view>
             <view>{{item.title}}</view>
+            <form bindsubmit="formSubmit" report-submit="{{true}}">
+                <button formType="submit" class='Sbtn'>
+                </button>
+            </form>
         </view>
 
         <view class="classItem" catchtap="gotoClassify">
             <view>
                 <image src="/assets/app/allclass.png" />
             </view>
+            <form bindsubmit="formSubmit" report-submit="{{true}}">
+                <button formType="submit" class='Sbtn'>
+                </button>
+            </form>
             <view>全部分类</view>
         </view>
     </view>
@@ -28,11 +40,19 @@
         <view class="mubanClassTitle" data-id="{{item.id}}" catchtap="checkClass">
             <text style="color:#222;font-size:40rpx;font-weight:bold;">{{item.txt}}</text>
             <text style="color:#666;font-size:28rpx;">查看更多 ></text>
+            <form bindsubmit="formSubmit" report-submit="{{true}}">
+                <button formType="submit" class='Sbtn'>
+                </button>
+            </form>
         </view>
 
         <view class="mubanIconListView">
-            <view data-bindex='{{bindex}}' data-index="{{index}}" class="mubanItem" wx:for="{{item.content}}" wx:key="{{index}}" catchtap="gotomaking">
+            <view style="position: relative;" data-bindex='{{bindex}}' data-index="{{index}}" class="mubanItem" wx:for="{{item.content}}" wx:key="{{index}}" catchtap="gotomaking">
                 <image src="{{srcDomin}}/newadmin/Uploads/{{item.xiaotu_url}}" />
+                <form bindsubmit="formSubmit" report-submit="{{true}}">
+                    <button formType="submit" class='Sbtn'>
+                    </button>
+                </form>
             </view>
         </view>
 

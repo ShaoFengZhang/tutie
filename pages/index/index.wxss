@@ -11,6 +11,7 @@ image {
 
 .topUploadView {
     margin: 8rpx auto 0;
+    position: relative;
 }
 
 .topUploadView image,.topUploadView {
@@ -22,23 +23,24 @@ image {
 
 .classView {
     width: 710rpx;
-    height: 148rpx;
+    /* height: 148rpx; */
     margin: 0rpx auto;
     display: flex;
     justify-content: space-between;
 }
 
 .classItem {
-    width: 112rpx;
-    height: 148rpx;
+    width: 128rpx;
+    /* height: 148rpx; */
     text-align: center;
     font-size: 28rpx;
     color:#666;
+    position: relative;
 }
 
 .classItem image {
-    width: 96rpx;
-    height: 96rpx;
+    width: 128rpx;
+    height: 128rpx;
     margin-bottom: 12rpx;
     border-radius: 50%;
 }
@@ -58,6 +60,7 @@ image {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 .mubanIconListView {

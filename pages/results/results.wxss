@@ -22,7 +22,7 @@
 }
 
 .posterView image {
-    width: 480rpx;
+    width: 580rpx;
 }
 
 .makeBtn {
@@ -46,6 +46,7 @@
 .changePic, .makingView {
     width: 134rpx;
     height: 144rpx;
+    position: relative;
 }
 
 .makeBtn image {

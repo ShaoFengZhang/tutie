@@ -10,9 +10,9 @@ Page({
         canIUse: wx.canIUse('button.open-type.getUserInfo'),
         srcDomin: loginApi.srcDomin,
         classArr: [{
-                title: '节日祝福',
-                icon: '/assets/app/jiericlass.png',
-                id: '12',
+                title: '人像抠图',
+                icon: '/assets/app/koutu.png',
+                id: 16,
             },
             {
                 title: '日签制作',
@@ -25,6 +25,7 @@ Page({
                 id: 14,
             },
         ],
+        topclassArr:[],
         apiHaveLoad: 1,
         contentArr: [],
     },
@@ -83,7 +84,7 @@ Page({
 
         if (options && options.mubanId) {
             wx.navigateTo({
-                url: `/pages/making/making?mubanId=${options.mubanId}&imgurl=${options.imgurl}`,
+                url: `/pages/making/making?mubanId=${options.mubanId}&imgurl=${options.imgurl}&type=${options.type}`,
             })
         }
     },
@@ -95,6 +96,7 @@ Page({
                 hasUserInfo: true
             });
         }
+        this.gettopClass()
     },
 
     //处理授权信息
@@ -143,7 +145,7 @@ Page({
         let bindex = Math.floor(Math.random()*3);
         util.upLoadImage("shangchuan", "image", 1, this, loginApi, function(data) {
             wx.navigateTo({
-                url: `/pages/results/results?picUrl=${data.imgurl}&mubanId=${_this.data.contentArr[index].content[bindex].id}&imgurl=${_this.data.contentArr[index].content[bindex].xiaotu_url}`,
+                url: `/pages/results/results?picUrl=${data.imgurl}&mubanId=${_this.data.contentArr[index].content[bindex].id}&imgurl=${_this.data.contentArr[index].content[bindex].xiaotu_url}&type=${_this.data.contentArr[index].content[bindex].type}`,
             })
         });
     },
@@ -155,7 +157,8 @@ Page({
             bindex
         } = e.currentTarget.dataset;
         wx.navigateTo({
-            url: `/pages/making/making?mubanId=${this.data.contentArr[bindex].content[index].id}&imgurl=${this.data.contentArr[bindex].content[index].xiaotu_url}&type=${this.data.contentArr[bindex].content[index].type}`,
+            url: `/pages/making/making?mubanId=${this.data.contentArr[bindex].content[index].id}&imgurl=${this.data.contentArr[bindex].content[index].xiaotu_url}&type=${this.
+            data.contentArr[bindex].content[index].type}`,
         })
     },
 
@@ -238,6 +241,18 @@ Page({
             if (res.status == 1) {
                 _this.setData({
                     classArr: _this.data.classArr.concat(res.type.slice(0, 3)),
+                });
+            }
+        })
+    },
+
+    gettopClass:function(){
+        let _this = this;
+        let gettopClassUrl = loginApi.domin + '/home/index/icon';
+        loginApi.requestUrl(_this, gettopClassUrl, "POST", {}, function (res) {
+            if (res.status == 1) {
+                _this.setData({
+                    topclassArr: res.icon,
                 });
             }
         })

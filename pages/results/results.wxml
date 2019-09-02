@@ -3,7 +3,7 @@
     <view class="posterView">
 
         <view class="imgview" style="height:{{viewHeight}}rpx">
-            <image mode="widthFix" src="{{posterUrl}}"/>
+            <image mode="widthFix" src="{{posterUrl}}" />
         </view>
 
     </view>
@@ -13,11 +13,19 @@
         <view class="changePic" style="margin-right:106rpx;" catchtap="shangchuan">
             <image src="/assets/app/huantu.png" />
             <text>换图</text>
+            <form bindsubmit="formSubmit" report-submit="{{true}}">
+                <button formType="submit" class='Sbtn'>
+                </button>
+            </form>
         </view>
 
         <view class="makingView" catchtap="judgevip">
             <image src="/assets/app/success.png" />
             <text>生成</text>
+            <form bindsubmit="formSubmit" report-submit="{{true}}">
+                <button formType="submit" class='Sbtn'>
+                </button>
+            </form>
         </view>
 
         <view class="wushijifen" wx:if="{{!ifVip}}">-50积分</view>

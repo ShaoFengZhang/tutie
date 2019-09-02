@@ -12,6 +12,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    position: relative;
 }
 
 .userIocn {
@@ -67,6 +68,7 @@
     justify-content: flex-start;
     align-items: center;
     background-color: #fff;
+    position: relative;
 }
 
 .shengming{

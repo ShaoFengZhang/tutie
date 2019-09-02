@@ -5,6 +5,9 @@ const app = getApp();
 Page({
 
     data: {
+        userInfo: {},
+        hasUserInfo: false,
+        canIUse: wx.canIUse('button.open-type.getUserInfo'),
         srcDomin: loginApi.srcDomin,
     },
 
@@ -22,6 +25,12 @@ Page({
     },
 
     onShow: function () {
+        if (app.globalData.userInfo) {
+            this.setData({
+                userInfo: app.globalData.userInfo,
+                hasUserInfo: true
+            });
+        }
     },
 
 
@@ -38,7 +47,7 @@ Page({
         let _this = this;
         util.upLoadImage("shangchuan", "image", 1, this, loginApi, function (data) {
             wx.navigateTo({
-                url: `/pages/results/results?picUrl=${data.imgurl}&mubanId=${_this.mubanId}&imgurl=${_this.imgurl}`,
+                url: `/pages/results/results?picUrl=${data.imgurl}&mubanId=${_this.mubanId}&imgurl=${_this.imgurl}&type=${_this.imgtype}`,
             })
         });
     },
@@ -66,5 +75,23 @@ Page({
                 wx.hideLoading();
             }
         })
+    },
+
+    // 获取授权信息
+    getUserInfo: function (e) {
+        console.log(e);
+        if (!e.detail.userInfo) {
+            util.toast("我们需要您的授权哦亲~", 1200)
+            return
+        }
+        app.globalData.userInfo = e.detail.userInfo
+        this.setData({
+            userInfo: e.detail.userInfo,
+            hasUserInfo: true
+        });
+        let iv = e.detail.iv;
+        let encryptedData = e.detail.encryptedData;
+        let session_key = app.globalData.session_key;
+        loginApi.checkUserInfo(app, e.detail, iv, encryptedData, session_key)
     },
 })

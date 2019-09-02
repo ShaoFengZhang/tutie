@@ -44,11 +44,19 @@
         </view>
 
         <view class="adbtn">立即观看</view>
+        <form bindsubmit="formSubmit" report-submit="{{true}}">
+            <button formType="submit" class='Sbtn'>
+            </button>
+        </form>
 
     </view>
 
     <view class="openVip" catchtap="gotoVip" wx:if="{{!huiyuanhide}}">
         <image src="/assets/app/openvip.png" />
+        <form bindsubmit="formSubmit" report-submit="{{true}}">
+            <button formType="submit" class='Sbtn'>
+            </button>
+        </form>
     </view>
 
 

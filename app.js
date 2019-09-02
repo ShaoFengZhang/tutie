@@ -16,8 +16,9 @@ App({
                 _this.Bheight = res.screenHeight - res.windowHeight - res.statusBarHeight - 44;
             }
         });
+    },
 
-
+    onShow:function(){
         // 强制更新
         const updateManager = wx.getUpdateManager();
 

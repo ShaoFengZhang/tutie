@@ -5,6 +5,10 @@
         <scroll-view scroll-y style="height: 100%">
             <view class="classBox {{index==nowClassIndex?'selectClassBox':null}}" data-id="{{item.id}}" wx:for="{{classArr}}" wx:key="{{index}}" data-index="{{index}}" catchtap="classClick">
                 {{item.txt}}
+                <form bindsubmit="formSubmit" report-submit="{{true}}">
+                    <button formType="submit" class='Sbtn'>
+                    </button>
+                </form>
             </view>
         </scroll-view>
 
@@ -17,6 +21,10 @@
             <view class="scrollContent">
                 <view class="mubanitem" data-id="{{item.id}}" wx:for="{{contentArr}}" wx:key="{{index}}" data-index="{{index}}" catchtap="gotomaking">
                     <image src="{{srcDomin}}/newadmin/Uploads/{{item.xiaotu_url}}" />
+                    <form bindsubmit="formSubmit" report-submit="{{true}}">
+                        <button formType="submit" class='Sbtn'>
+                        </button>
+                    </form>
                 </view>
                 <!-- 加载中 -->
                 <view class='loading' wx:if="{{ifloadtxt}}">

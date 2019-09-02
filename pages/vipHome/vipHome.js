@@ -7,39 +7,30 @@ Page({
 
     data: {
         vipPriceArr:[
-            
-            {
-                title:"终身会员",
-                nowprice:119,
-                // nowprice:0.01,
-                oriprice:399,
-                type:100,
-            },
 
             {
-                title: "1天会员",
-                nowprice: 2.6,
-                // nowprice: 0.01,
-                oriprice: 9.9,
-                type:1,
-            },
-
-            {
-                title: "7天会员",
+                title: "半年会员",
                 nowprice: 9.9,
                 // nowprice: 0.01,
                 oriprice: 49,
-                type:7,
+                type: 188,
             },
 
             {
                 title: "月会员",
+                nowprice: 2.9,
+                // nowprice: 0.01,
+                oriprice: 9.9,
+                type: 30,
+            },
+
+            {
+                title: "年会员",
                 nowprice: 19.9,
                 // nowprice: 0.01,
                 oriprice: 109,
-                type:30,
+                type:365,
             },
-
         ],
         nowIndex:0,    
     },

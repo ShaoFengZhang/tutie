@@ -19,7 +19,7 @@
 }
 
 .topImage image {
-    width: 480rpx;
+    width: 580rpx;
 }
 
 .makeBtn {
@@ -46,4 +46,5 @@
     font-weight: 500;
     color: rgba(255, 255, 255, 1);
     line-height: 94rpx;
+    position: relative;
 }

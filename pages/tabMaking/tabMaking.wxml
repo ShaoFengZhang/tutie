@@ -10,8 +10,20 @@
 
     <view class="makeBtn">
 
-        <view wx:if="{{imgtype!=15}}" class="uploadBtn" catchtap="shangchuan">上传1张照片 立即生成</view>
-        <view wx:if="{{imgtype==15}}" class="uploadBtn" catchtap="cutOutshangchuan">上传1张照片 立即生成</view>
+        <view wx:if="{{imgtype!=16}}" class="uploadBtn" catchtap="shangchuan">
+            上传1张照片 立即生成
+            <form bindsubmit="formSubmit" report-submit="{{true}}">
+                <button formType="submit" class='Sbtn'>
+                </button>
+            </form>
+        </view>
+        <view wx:if="{{imgtype==16}}" class="uploadBtn" catchtap="cutOutshangchuan">
+            上传1张照片 立即生成
+            <form bindsubmit="formSubmit" report-submit="{{true}}">
+                <button formType="submit" class='Sbtn'>
+                </button>
+            </form>
+        </view>
 
     </view>
 

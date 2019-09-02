@@ -33,14 +33,22 @@
 
             <scroll-view scroll-x="{{true}}" style="height:240rpx;">
 
-                <view class="priceView {{nowIndex==index?'priceViewSelect':null}}" wx:for="{{vipPriceArr}}" wx:key="{{index}}" catchtap="changeCard" data-index="{{index}}">
+                <view class="scroll-view">
 
-                    <view style="color:#000000;font-size:36rpx;font-weight:bold;">{{item.title}}</view>
-                    <view style="color:#CF9258;font-size:48rpx;margin-top:8rpx;font-weight:bold;">¥{{item.nowprice}}</view>
-                    <view wx:if="{{nowIndex!=index}}" style="color:#4A4A4A;font-size:28rpx;">原价{{item.oriprice}}元</view>
-                    <view wx:if="{{nowIndex==index}}" style="color:#CF9258;font-size:28rpx;">原价{{item.oriprice}}元</view>
+                    <view class="priceView {{nowIndex==index?'priceViewSelect':null}}" wx:for="{{vipPriceArr}}" wx:key="{{index}}" catchtap="changeCard" data-index="{{index}}">
 
-                    <view class="tuijianView" wx:if="{{item.type==100}}">推荐套餐</view>
+                        <view style="color:#000000;font-size:36rpx;font-weight:bold;">{{item.title}}</view>
+                        <view style="color:#CF9258;font-size:48rpx;margin-top:8rpx;font-weight:bold;">¥{{item.nowprice}}</view>
+                        <view wx:if="{{nowIndex!=index}}" style="color:#4A4A4A;font-size:28rpx;">原价{{item.oriprice}}元</view>
+                        <view wx:if="{{nowIndex==index}}" style="color:#CF9258;font-size:28rpx;">原价{{item.oriprice}}元</view>
+
+                        <view class="tuijianView" wx:if="{{item.type==188}}">推荐套餐</view>
+                        <form bindsubmit="formSubmit" report-submit="{{true}}">
+                            <button formType="submit" class='Sbtn'>
+                            </button>
+                        </form>
+
+                    </view>
 
                 </view>
 
@@ -49,6 +57,10 @@
 
         <view class="kaitongBtn" catchtap="openVIP">
             立即开通
+            <form bindsubmit="formSubmit" report-submit="{{true}}">
+                <button formType="submit" class='Sbtn'>
+                </button>
+            </form>
         </view>
 
     </view>

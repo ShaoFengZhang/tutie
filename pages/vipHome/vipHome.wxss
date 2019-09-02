@@ -12,7 +12,7 @@
     width: 100%;
     height: 324rpx;
     box-sizing: border-box;
-    padding: 20rpx 48rpx 40rpx 16rpx;
+    padding: 20rpx 48rpx 40rpx 32rpx;
 }
 
 .powerList {
@@ -34,13 +34,20 @@
     width: 100%;
     height: 552rpx;
     box-sizing: border-box;
-    padding: 40rpx 0 0 24rpx;
+    padding: 40rpx 32rpx 0 32rpx;
 }
 
 .scrollView {
     overflow: hidden;
     white-space: nowrap;
     margin-top: 40rpx;
+}
+
+.scroll-view{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .priceView {
@@ -51,7 +58,7 @@
     background: rgba(255, 255, 255, 1);
     border-radius: 8rpx;
     border: 2rpx solid rgba(231, 231, 231, 1);
-    margin-right: 20rpx;
+    /* margin-right: 20rpx; */
     text-align: center;
     padding: 40rpx 0 36rpx 0;
     position: relative;
@@ -82,12 +89,13 @@
     height: 96rpx;
     background: linear-gradient(83deg, rgba(247, 191, 127, 1) 0%, rgba(204, 143, 83, 1) 100%);
     border-radius: 8rpx;
-    margin: 40rpx 0 0 8rpx;
+    margin: 40rpx 0 0;
     color: #fff;
     text-align: center;
     line-height: 96rpx;
     font-size: 48rpx;
     font-weight: bold;
+    position: relative;
 }
 
 .mubanView {

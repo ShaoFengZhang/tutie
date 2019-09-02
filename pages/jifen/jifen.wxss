@@ -77,4 +77,5 @@ image {
 
 .openVip{
     margin: 66rpx auto 0;
+    position: relative;
 }

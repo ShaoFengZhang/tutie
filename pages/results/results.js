@@ -33,6 +33,7 @@ Page({
             this.picUrl = options.picUrl;
             this.mubanId = options.mubanId;
             this.shareImg = options.imgurl;
+            this.imgtype = options.type;
             this.generatePoster();
         };
 
@@ -67,7 +68,7 @@ Page({
     onShareAppMessage: function() {
         return {
             title: '@你，大家一起来制图~',
-            path: `/pages/index/index?mubanId=${this.mubanId}&imgurl=${this.shareImg}&uid=${wx.getStorageSync('u_id')}`,
+            path: `/pages/index/index?mubanId=${this.mubanId}&imgurl=${this.shareImg}&uid=${wx.getStorageSync('u_id')}&type=${this.imgtype}`,
             imageUrl: this.data.posterUrl
         }
     },

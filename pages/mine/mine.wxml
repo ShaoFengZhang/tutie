@@ -14,7 +14,8 @@
                 <image wx:if="{{isVip}}" src="/assets/app/huiyuan.png" style="width:40rpx;height:40rpx;" />
             </view>
             <view style="color:#999;font-size:28rpx;margin-top:6rpx;" wx:if="{{!huiyuanhide}}">
-                {{isVip?endtime:'点击开通会员'}}<text wx:if="{{isVip &&!zhongshen}}">到期</text>
+                {{isVip?endtime:'点击开通会员'}}
+                <text wx:if="{{isVip &&!zhongshen}}">到期</text>
             </view>
         </view>
 
@@ -22,9 +23,14 @@
             {{isVip?'续费':'开通会员'}}
         </view>
 
+        <form bindsubmit="formSubmit" report-submit="{{true}}">
+            <button formType="submit" class='Sbtn'>
+            </button>
+        </form>
+
     </view>
 
-    <view class="serverItem" catchtap="gotoVip" style="margin-top:16rpx;"  wx:if="{{!huiyuanhide}}">
+    <view class="serverItem" catchtap="gotoVip" style="margin-top:16rpx;" wx:if="{{!huiyuanhide}}">
 
         <image style="width:48rpx;height:48rpx;margin-right:32rpx;" src="/assets/app/minehuiyuan.png" />
 
@@ -34,6 +40,10 @@
         </view>
 
         <image style="width:60rpx;height:60rpx;" src="/assets/app/right.png" />
+        <form bindsubmit="formSubmit" report-submit="{{true}}">
+            <button formType="submit" class='Sbtn'>
+            </button>
+        </form>
 
     </view>
 
@@ -46,6 +56,10 @@
             <view style="width:550rpx">我的积分</view>
 
             <image style="width:60rpx;height:60rpx;" src="/assets/app/right.png" />
+            <form bindsubmit="formSubmit" report-submit="{{true}}">
+                <button formType="submit" class='Sbtn'>
+                </button>
+            </form>
 
         </view>
 
