@@ -158,7 +158,7 @@ Page({
         } = e.currentTarget.dataset;
         wx.navigateTo({
             url: `/pages/making/making?mubanId=${this.data.contentArr[bindex].content[index].id}&imgurl=${this.data.contentArr[bindex].content[index].xiaotu_url}&type=${this.
-            data.contentArr[bindex].content[index].type}`,
+                data.contentArr[bindex].content[index].type}&width=${this.data.contentArr[bindex].content[index].img_width}&height=${this.data.contentArr[bindex].content[index].img_height}`,
         })
     },
 

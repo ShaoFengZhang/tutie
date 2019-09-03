@@ -65,6 +65,24 @@
 
     </view>
 
+    <view class="serverListView">
+
+        <view class="serverItem" catchtap="lianxikefu" data-num='17130049211'>
+
+            <image style="width:48rpx;height:48rpx;margin-right:32rpx;" src="/assets/app/my-select.png" />
+
+            <view style="width:550rpx">联系客服</view>
+
+            <image style="width:60rpx;height:60rpx;" src="/assets/app/right.png" />
+            <form bindsubmit="formSubmit" report-submit="{{true}}">
+                <button formType="submit" class='Sbtn'>
+                </button>
+            </form>
+
+        </view>
+
+    </view>
+
 
 
     <!-- <view class="shengming serverItem">

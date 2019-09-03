@@ -3,5 +3,8 @@
     "navigationBarBackgroundColor":"#000",
     "navigationBarTitleText": "制作",
     "backgroundColor": "#000000",
-    "disableSwipeBack": true
+    "disableSwipeBack": true,
+    "usingComponents": {
+        "image-cropper": "/plug/cropper"
+    }
 }

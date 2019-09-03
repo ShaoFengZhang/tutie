@@ -36,7 +36,6 @@ Page({
     },
 
     onLoad: function (options) {
-
     },
 
     onShow: function () {
@@ -197,6 +196,17 @@ Page({
             if (res.status == 1) {
                 wx.switchTab({
                     url: '/pages/mine/mine'
+                })
+            }else{
+                wx.showModal({
+                    title: '温馨提示',
+                    content: '请联系客服电话 17130049211 或者加客服微信 bxz201809',
+                    showCancel: false,
+                    success: function (res) {
+                        wx.switchTab({
+                            url: '/pages/mine/mine'
+                        })
+                    }
                 })
             }
         })

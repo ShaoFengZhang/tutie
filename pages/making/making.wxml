@@ -1,4 +1,4 @@
-<view class="bg">
+<view class="bg" wx:if="{{!ifshowcropper}}">
 
     <view class="topImage">
 
@@ -17,7 +17,6 @@
                 </button>
             </form>
         </view>
-        <!-- <view wx:if="{{imgtype!=16}}" class="uploadBtn" catchtap="cutOutshangchuan">上传1张照片 立即生成</view> -->
         <view wx:if="{{imgtype==16}}" class="uploadBtn" catchtap="cutOutshangchuan">
             上传人像照片 立即生成
             <form bindsubmit="formSubmit" report-submit="{{true}}">
@@ -31,4 +30,8 @@
     <button catchtap='catchtap' id='getInfoBtn' wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo">
     </button>
 
+</view>
+
+<view class="bg" wx:if="{{ifshowcropper}}">
+    <image-cropper id="image-cropper" limit_move="{{true}}" disable_rotate="{{true}}" width="{{width}}" height="{{height}}" imgSrc="{{src}}" bindimageload="loadimage" bind:clickcut="clickcut"></image-cropper>
 </view>
